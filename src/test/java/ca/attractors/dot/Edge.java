@@ -4,11 +4,13 @@ public class Edge extends DotType {
 	private String from;
 	private String to;
 	private EdgeAttributes attributes;
+	private GraphType graphType;
 
-	public Edge(String aFrom, String aTo) {
+	public Edge(String aFrom, String aTo, GraphType aGraphType) {
 		from = aFrom;
 		to = aTo;
 		attributes = new EdgeAttributes();
+		graphType = aGraphType;
 	}
 
 	public EdgeAttributes getAttributes() {
@@ -16,6 +18,10 @@ public class Edge extends DotType {
 	}
 
 	public String toDotString() {
-		return from + " -> " + to + " " + attributes.toDotString() + "\n";
+		return from + " " + getEdgeString() + " " + to + " " + attributes.toDotString() + "\n";
+	}
+
+	private String getEdgeString() {
+		return graphType.getEdgeString();
 	}
 }
