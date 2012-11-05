@@ -1,17 +1,15 @@
 package ca.attractors.dot;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import ca.attractors.dot.graphelements.GraphElementAttributes;
 
-public abstract class DotType extends DotObject {
+public abstract class DotType<M extends GraphElementAttributes> extends DotObject {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
 	private static final String COMMENT = "comment";
-	private Map<String, String> attributes = new HashMap<String, String>();
+	private M attributes;
 
-	protected Map<String, String> getAttributes() {
+	protected M getAttributes() {
 		return attributes;
 	}
 
@@ -30,23 +28,11 @@ public abstract class DotType extends DotObject {
 	protected abstract String getAttributesAsDotString();
 
 	protected String getBracketedAttributesAsDotString() {
-		if (attributes.isEmpty())
-			return "";
-		StringBuilder builder = new StringBuilder();
-		builder.append(" [");
-		builder.append(getRawAttributesAsDotString());
-		builder.append(']');
-		return builder.toString();
+		return attributes.getBracketAttributesAsDotString();
 	}
 
 	protected String getRawAttributesAsDotString() {
-		StringBuilder builder = new StringBuilder();
-		String comma = "";
-		for (Entry<String, String> entry : attributes.entrySet()) {
-			builder.append(comma + entry.getKey() + "=\"" + entry.getValue() + "\"");
-			comma = ", ";
-		}
-		return builder.toString();
+		return attributes.getRawAttributesAsDotString();
 	}
 
 	protected String get(String aKey) {
@@ -54,11 +40,7 @@ public abstract class DotType extends DotObject {
 	}
 
 	protected void set(String aKey, String aValue) {
-		if (aValue == null || aValue == "") {
-			attributes.remove(aKey);
-			return;
-		}
-		attributes.put(aKey, aValue);
+		attributes.set(aKey, aValue);
 	}
 
 	public String getFontname() {
