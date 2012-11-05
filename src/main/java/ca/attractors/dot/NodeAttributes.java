@@ -1,6 +1,6 @@
 package ca.attractors.dot;
 
-public class NodeAttributes extends AbstractDotObjectAttributes {
+public class NodeAttributes extends DotObjectAttributes {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String STYLE = "style";
@@ -27,6 +27,11 @@ public class NodeAttributes extends AbstractDotObjectAttributes {
 
 	public void setStyle(String aStyle) {
 		set(STYLE, aStyle);
+	}
+
+	@Override
+	protected CharSequence getDefinition() {
+		return "Node";
 	}
 
 }

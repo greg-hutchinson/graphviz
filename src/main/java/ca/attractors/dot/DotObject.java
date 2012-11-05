@@ -1,6 +1,6 @@
 package ca.attractors.dot;
 
-public abstract class DotObject<M extends AbstractDotObjectAttributes> extends OldDotObject {
+public abstract class DotObject<M extends DotObjectAttributes> extends DotElement {
 	public DotObject(M aAttributes) {
 		attributes = aAttributes;
 	}
@@ -11,26 +11,6 @@ public abstract class DotObject<M extends AbstractDotObjectAttributes> extends O
 		return attributes;
 	}
 
-	@Override
-	public String toDotString() {
-		return getStartDefinitionAsDotString() + getAttributesAsDotString() + getEndDefinitionAsDotString();
-	}
-
-	protected String getEndDefinitionAsDotString() {
-		return "\n";
-	}
-
-	protected abstract String getStartDefinitionAsDotString();
-
-	protected abstract String getAttributesAsDotString();
-
-	protected String getBracketedAttributesAsDotString() {
-		return attributes.getBracketAttributesAsDotString();
-	}
-
-	protected String getRawAttributesAsDotString() {
-		return attributes.getRawAttributesAsDotString();
-	}
 
 	public String getFontname() {
 		return attributes.getFontname();
