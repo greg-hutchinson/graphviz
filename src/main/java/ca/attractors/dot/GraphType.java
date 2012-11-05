@@ -9,4 +9,11 @@ public enum GraphType {
 		return "--";
 	}
 
+	@Override
+	public String toString() {
+		if (this == DIGRAPH)
+			return "digraph";
+		return "graph";
+	}
+
 }
