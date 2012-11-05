@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public abstract class DotObjectAttributes extends DotElement {
+public abstract class DotObjectAttributes extends DotElement implements IGraphElement {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";

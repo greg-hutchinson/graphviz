@@ -1,8 +1,9 @@
 package ca.attractors.dot;
 
-public class Node extends DotObject<NodeAttributes> {
+public class Node extends DotObject<NodeAttributes> implements IGraphElement {
 	private String name;
-	public Node(String aName) {
+
+	protected Node(String aName) {
 		super(new NodeAttributes());
 		name = aName;
 	}

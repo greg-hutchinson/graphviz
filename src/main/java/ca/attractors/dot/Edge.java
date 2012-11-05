@@ -1,12 +1,12 @@
 package ca.attractors.dot;
 
-public class Edge extends DotObject<EdgeAttributes> {
+public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
 
 	private String from;
 	private String to;
 	private GraphType graphType;
 
-	public Edge(String aFrom, String aTo, GraphType aGraphType) {
+	protected Edge(String aFrom, String aTo, GraphType aGraphType) {
 		super(new EdgeAttributes());
 		from = aFrom;
 		to = aTo;

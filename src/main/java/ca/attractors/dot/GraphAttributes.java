@@ -1,7 +1,7 @@
 package ca.attractors.dot;
 
 public class GraphAttributes extends DotObjectAttributes {
-	private static final String BG_COLOR = "bgColor";
+	private static final String BG_COLOR = "bgcolor";
 
 	public void setBackgroundColor(String aString) {
 		set(BG_COLOR, aString);
@@ -13,7 +13,7 @@ public class GraphAttributes extends DotObjectAttributes {
 
 	@Override
 	protected CharSequence getDefinition() {
-		return "Graph";
+		return "graph";
 	}
 
 }
