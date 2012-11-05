@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph extends DotType {
+	private static final String BG_COLOR = "bgColor";
+
 	private String name;
 	private GraphType type;
 	private List<DotType> objects = new ArrayList<DotType>();
-	private static final String COLOR = "color";
 
 	public Graph() {
 		this("", GraphType.DIGRAPH);
@@ -20,12 +21,12 @@ public class Graph extends DotType {
 		type = aGraphType;
 	}
 
-	public String getColor() {
-		return get(COLOR);
+	public void setBackgroundColor(String aString) {
+		set(BG_COLOR, aString);
 	}
 
-	public void setColor(String aFillColor) {
-		set(COLOR, aFillColor);
+	public String getBackgroundColor() {
+		return get(BG_COLOR);
 	}
 
 	public String getName() {
@@ -33,18 +34,25 @@ public class Graph extends DotType {
 	}
 
 	@Override
-	protected String getDefinitionString() {
-		throw new IllegalStateException("Not yet implemented");
+	protected String getStartDefinitionAsDotString() {
+		String textName = name;
+		if (name != "")
+			textName += " ";
+		return type.toString() + " " + textName + "{\n";
 	}
 
-	public String toDotString() {
+	@Override
+	public String getAttributesAsDotString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(type.toString() + " " + name + " {\n");
+		builder.append(getRawAttributesAsDotString() + "\n");
 		for (DotType type : objects) {
 			builder.append(type.toDotString());
 		}
-		builder.append("}");
 		return builder.toString();
+	}
+
+	protected String getEndDefinitionAsDotString() {
+		return "}\n";
 	}
 
 	@Override
@@ -62,5 +70,6 @@ public class Graph extends DotType {
 	public void addObject(DotType aType) {
 		objects.add(aType);
 	}
+
 
 }

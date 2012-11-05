@@ -1,19 +1,15 @@
 package ca.attractors.dot;
 
-public class Edge extends DotType {
-	private String from;
-	private String to;
-	private GraphType graphType;
-
-	public Edge(String aFrom, String aTo, GraphType aGraphType) {
-		from = aFrom;
-		to = aTo;
-		graphType = aGraphType;
-	}
+public class Node extends DotType {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
-	private static final String COLOR = "color";
 	private static final String STYLE = "style";
+
+	private String name;
+
+	public Node(String aName) {
+		name = aName;
+	}
 
 	public String getLabel() {
 		return get(LABEL);
@@ -39,20 +35,27 @@ public class Edge extends DotType {
 		set(STYLE, aStyle);
 	}
 
-	public void setColor(String aString) {
-		set(COLOR, aString);
+	public String getName() {
+		return name;
 	}
 
-	public String getColor() {
-		return get(COLOR);
+	protected String getAttributesAsDotString() {
+		return getBracketedAttributesAsDotString();
 	}
 
-
-	public String getDefinitionString() {
-		return from + " " + getEdgeString() + " " + to;
+	public String getStartDefinitionAsDotString() {
+		return name;
 	}
 
-	private String getEdgeString() {
-		return graphType.getEdgeString();
+	@Override
+	public boolean equals(Object aObj) {
+		if (!(aObj instanceof Node))
+			return false;
+		Node other = (Node) aObj;
+		return other.getName().equals(getName());
+	}
+
+	public int hashCode() {
+		return name.hashCode();
 	}
 }
