@@ -3,18 +3,18 @@ package ca.attractors.dot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Graph extends DotType {
-	private static final String BG_COLOR = "bgColor";
+public class Graph extends DotObject<GraphAttributes> {
 
 	private String name;
 	private GraphType type;
-	private List<DotType> objects = new ArrayList<DotType>();
+	private List<DotObject> objects = new ArrayList<DotObject>();
 
 	public Graph() {
 		this("", GraphType.DIGRAPH);
 	}
 
 	public Graph(String aName, GraphType aGraphType) {
+		super(new GraphAttributes());
 		if (aName == null)
 			throw new NullPointerException("aName must not be null");
 		name = aName;
@@ -22,11 +22,11 @@ public class Graph extends DotType {
 	}
 
 	public void setBackgroundColor(String aString) {
-		set(BG_COLOR, aString);
+		getAttributes().setBackgroundColor(aString);
 	}
 
 	public String getBackgroundColor() {
-		return get(BG_COLOR);
+		return getAttributes().getBackgroundColor();
 	}
 
 	public String getName() {
@@ -45,7 +45,7 @@ public class Graph extends DotType {
 	public String getAttributesAsDotString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(getRawAttributesAsDotString() + "\n");
-		for (DotType type : objects) {
+		for (DotObject type : objects) {
 			builder.append(type.toDotString());
 		}
 		return builder.toString();
@@ -67,7 +67,7 @@ public class Graph extends DotType {
 		return name.hashCode();
 	}
 
-	public void addObject(DotType aType) {
+	public void addObject(DotObject aType) {
 		objects.add(aType);
 	}
 
