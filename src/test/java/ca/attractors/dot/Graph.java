@@ -4,29 +4,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph extends DotType {
-	private GraphType type;
-	private GraphAttributes attributes;
 	private String name;
+	private GraphType type;
 	private List<DotType> objects = new ArrayList<DotType>();
+	private static final String COLOR = "color";
 
 	public Graph() {
 		this("", GraphType.DIGRAPH);
-	}
-
-	public String getName() {
-		return name;
 	}
 
 	public Graph(String aName, GraphType aGraphType) {
 		if (aName == null)
 			throw new NullPointerException("aName must not be null");
 		name = aName;
-		attributes = new GraphAttributes();
 		type = aGraphType;
 	}
 
-	public GraphAttributes getAttributes() {
-		return attributes;
+	public String getColor() {
+		return get(COLOR);
+	}
+
+	public void setColor(String aFillColor) {
+		set(COLOR, aFillColor);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	protected String getDefinitionString() {
+		throw new IllegalStateException("Not yet implemented");
 	}
 
 	public String toDotString() {
