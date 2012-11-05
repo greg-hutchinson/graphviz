@@ -1,51 +1,48 @@
 package ca.attractors.dot;
 
-public class Edge extends DotType {
-	private static final String LABEL = "label";
-	private static final String FILLCOLOR = "fillcolor";
-	private static final String COLOR = "color";
-	private static final String STYLE = "style";
+public class Edge extends DotObject<EdgeAttributes> {
 
 	private String from;
 	private String to;
 	private GraphType graphType;
 
 	public Edge(String aFrom, String aTo, GraphType aGraphType) {
+		super(new EdgeAttributes());
 		from = aFrom;
 		to = aTo;
 		graphType = aGraphType;
 	}
 
 	public String getLabel() {
-		return get(LABEL);
+		return getAttributes().getLabel();
 	}
 
 	public void setLabel(String aLabel) {
-		set(LABEL, aLabel);
+		getAttributes().setLabel(aLabel);
 	}
 
 	public String getFillColor() {
-		return get(FILLCOLOR);
+		return getAttributes().getFillColor();
 	}
 
 	public void setFillColor(String aFillColor) {
-		set(FILLCOLOR, aFillColor);
+		getAttributes().setFillColor(aFillColor);
 	}
 
 	public String getStyle() {
-		return get(STYLE);
+		return getAttributes().getStyle();
 	}
 
 	public void setStyle(String aStyle) {
-		set(STYLE, aStyle);
+		getAttributes().setStyle(aStyle);
 	}
 
 	public void setColor(String aString) {
-		set(COLOR, aString);
+		getAttributes().setColor(aString);
 	}
 
 	public String getColor() {
-		return get(COLOR);
+		return getAttributes().getColor();
 	}
 
 	protected String getAttributesAsDotString() {
