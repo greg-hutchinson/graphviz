@@ -13,6 +13,7 @@ public class GraphTest extends TestCase {
 	public void testToDotStringComplex() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		Node node = graph.newNode("node1");
+//		node.setFontname("abc");
 		graph.setBackgroundColor("red");
 		Edge edge = graph.newEdge("a", "b");
 		Subgraph subgraph = graph.newSubgraph("sub1");

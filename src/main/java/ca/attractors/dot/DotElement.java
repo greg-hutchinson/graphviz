@@ -12,6 +12,7 @@ public abstract class DotElement {
 		return out.toString();
 	}
 
+	//FIXME, GH, This is overengineered. I can't even make sense out of it anymore. :-)
 	public void toDotStringOn(PrintStream aPrintStream) {
 		aPrintStream.append(getDefinitionBegin());
 		aPrintStream.append(getDefinitionBody());
