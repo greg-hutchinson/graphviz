@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Graph extends DotObject<GraphAttributes> {
-
 	private String name;
 	private GraphType type;
-	private List<DotObject<? extends DotObjectAttributes>> objects = new ArrayList<DotObject<? extends DotObjectAttributes>>();
+	private List<IGraphElement> objects = new ArrayList<IGraphElement>();
 
 	public Graph() {
 		this("", GraphType.DIGRAPH);
@@ -33,6 +32,53 @@ public class Graph extends DotObject<GraphAttributes> {
 		return name;
 	}
 
+
+	protected IGraphElement addObject(IGraphElement aType) {
+		objects.add(aType);
+		return aType;
+	}
+
+	@Override
+	protected CharSequence getDefinitionBody() {
+		if (getAttributes().isEmpty())
+			return "";
+		StringBuilder builder = new StringBuilder();
+		builder.append(getAttributes().toDotString());
+		for (IGraphElement type : objects) {
+			builder.append(type.toDotString());
+		}
+		return builder.toString();
+	}
+
+	@Override
+	protected CharSequence getDefinitionEnd() {
+		return "}\n";
+	}
+
+	@Override
+	protected CharSequence getDefinition() {
+		String textName = name;
+		if (name != "")
+			textName += " ";
+		return getGraphTypeString() + " " + textName + "{\n";
+	}
+
+	protected String getGraphTypeString() {
+		return type.toString();
+	}
+
+	public Node newNode(String aString) {
+		return (Node) addObject(new Node(aString));
+	}
+
+	public Edge newEdge(String aFromName, String aToName) {
+		return (Edge) addObject(new Edge(aFromName, aToName, type));
+	}
+
+	public Subgraph newSubgraph(String aName) {
+		return (Subgraph) addObject(new Subgraph(aName, type));
+	}
+
 	@Override
 	public boolean equals(Object aObj) {
 		if (!(aObj instanceof Node))
@@ -45,30 +91,4 @@ public class Graph extends DotObject<GraphAttributes> {
 		return name.hashCode();
 	}
 
-	public void addObject(DotObject<? extends DotObjectAttributes> aType) {
-		objects.add(aType);
-	}
-
-	@Override
-	protected CharSequence getDefinitionBody() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(getAttributes().toDotString());
-		for (DotObject<?> type : objects) {
-			builder.append(type.toDotString());
-		}
-		return builder.toString();
-	}
-
-	@Override
-	protected CharSequence getDefinitionEnd() {
-		return "}";
-	}
-
-	@Override
-	protected CharSequence getDefinition() {
-		String textName = name;
-		if (name != "")
-			textName += " ";
-		return type.toString() + " " + textName + "{\n";
-	}
 }
