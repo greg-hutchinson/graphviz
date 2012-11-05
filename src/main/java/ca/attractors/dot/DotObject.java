@@ -19,6 +19,14 @@ public abstract class DotObject<M extends DotObjectAttributes> extends DotElemen
 	public void setFontname(String aFontname) {
 		attributes.setFontname(aFontname);
 	}
+
+	public String getFontsize() {
+		return attributes.getFontsize();
+	}
+
+	public void setFontsize(String aFontsize) {
+		attributes.setFontsize(aFontsize);
+	}
 	public String getUrl() {
 		return attributes.getUrl();
 	}

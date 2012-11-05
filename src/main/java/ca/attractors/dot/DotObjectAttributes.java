@@ -9,6 +9,7 @@ public abstract class DotObjectAttributes extends DotElement implements IGraphEl
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
 	private static final String COMMENT = "comment";
+	private static final String FONTSIZE = "fontsize";
 
 	private Map<String, String> attributes = new HashMap<String, String>();
 
@@ -48,6 +49,14 @@ public abstract class DotObjectAttributes extends DotElement implements IGraphEl
 
 	public void setFontname(String aFontname) {
 		set(FONTNAME, aFontname);
+	}
+
+	public String getFontsize() {
+		return get(FONTSIZE);
+	}
+
+	public void setFontsize(String aFontsize) {
+		set(FONTSIZE, aFontsize);
 	}
 
 	public String getUrl() {
