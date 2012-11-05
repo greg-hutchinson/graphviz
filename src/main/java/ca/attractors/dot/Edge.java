@@ -13,6 +13,15 @@ public class Edge extends DotObject<EdgeAttributes> {
 		graphType = aGraphType;
 	}
 
+	public String getDefinition() {
+		return from + " " + getEdgeString() + " " + to;
+	}
+
+	@Override
+	protected CharSequence getDefinitionBody() {
+		return getAttributes().getDefinitionBody();
+	}
+
 	public String getLabel() {
 		return getAttributes().getLabel();
 	}
@@ -43,15 +52,6 @@ public class Edge extends DotObject<EdgeAttributes> {
 
 	public String getColor() {
 		return getAttributes().getColor();
-	}
-
-	protected String getAttributesAsDotString() {
-		return getBracketedAttributesAsDotString();
-	}
-
-
-	public String getStartDefinitionAsDotString() {
-		return from + " " + getEdgeString() + " " + to;
 	}
 
 	private String getEdgeString() {

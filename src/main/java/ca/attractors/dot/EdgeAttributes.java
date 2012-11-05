@@ -1,6 +1,6 @@
 package ca.attractors.dot;
 
-public class EdgeAttributes extends AbstractDotObjectAttributes {
+public class EdgeAttributes extends DotObjectAttributes {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String COLOR = "color";
@@ -36,6 +36,11 @@ public class EdgeAttributes extends AbstractDotObjectAttributes {
 
 	public String getColor() {
 		return get(COLOR);
+	}
+
+	@Override
+	protected CharSequence getDefinition() {
+		return "Edge";
 	}
 
 }

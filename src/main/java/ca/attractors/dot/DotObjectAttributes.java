@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public abstract class AbstractDotObjectAttributes {
+public abstract class DotObjectAttributes extends DotElement {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
@@ -13,26 +13,20 @@ public abstract class AbstractDotObjectAttributes {
 	private Map<String, String> attributes = new HashMap<String, String>();
 
 	public boolean isEmpty() {
-		return true;
+		return attributes.isEmpty();
 	}
 
-	public String getBracketAttributesAsDotString() {
-		if (attributes.isEmpty())
+	public String getDefinitionBody() {
+		if (isEmpty())
 			return "";
 		StringBuilder builder = new StringBuilder();
 		builder.append(" [");
-		builder.append(getRawAttributesAsDotString());
-		builder.append(']');
-		return builder.toString();
-	}
-	
-	public String getRawAttributesAsDotString() {
-		StringBuilder builder = new StringBuilder();
 		String comma = "";
 		for (Entry<String, String> entry : attributes.entrySet()) {
 			builder.append(comma + entry.getKey() + "=\"" + entry.getValue() + "\"");
 			comma = ", ";
 		}
+		builder.append(']');
 		return builder.toString();
 	}
 

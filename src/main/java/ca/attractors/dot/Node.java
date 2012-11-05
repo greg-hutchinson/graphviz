@@ -2,10 +2,19 @@ package ca.attractors.dot;
 
 public class Node extends DotObject<NodeAttributes> {
 	private String name;
-
 	public Node(String aName) {
 		super(new NodeAttributes());
 		name = aName;
+	}
+
+	@Override
+	protected CharSequence getDefinitionBody() {
+		return getAttributes().getDefinitionBody();
+	}
+
+	@Override
+	protected CharSequence getDefinition() {
+		return name;
 	}
 
 	public String getName() {
@@ -36,13 +45,6 @@ public class Node extends DotObject<NodeAttributes> {
 		getAttributes().setStyle(aStyle);
 	}
 
-	protected String getAttributesAsDotString() {
-		return getBracketedAttributesAsDotString();
-	}
-
-	public String getStartDefinitionAsDotString() {
-		return name;
-	}
 
 	@Override
 	public boolean equals(Object aObj) {
@@ -55,4 +57,5 @@ public class Node extends DotObject<NodeAttributes> {
 	public int hashCode() {
 		return name.hashCode();
 	}
+
 }
