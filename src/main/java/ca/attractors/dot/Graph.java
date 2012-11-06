@@ -1,12 +1,15 @@
 package ca.attractors.dot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Graph extends DotObject<GraphAttributes> {
 	private String name;
 	private GraphType type;
 	private List<IGraphElement> objects = new ArrayList<IGraphElement>();
+	private Map<String, Node> nodes = new HashMap<String, Node>();
 
 	public Graph() {
 		this("", GraphType.DIGRAPH);
@@ -32,9 +35,15 @@ public class Graph extends DotObject<GraphAttributes> {
 		return name;
 	}
 
+	private Node addNode(Node aNode) {
+		nodes.put(aNode.getName(), aNode);
+		return aNode;
+	}
 
-	protected IGraphElement addObject(IGraphElement aType) {
+	private IGraphElement addGraphElement(IGraphElement aType) {
 		objects.add(aType);
+		if (aType instanceof Node)
+			addNode((Node) aType);
 		return aType;
 	}
 
@@ -68,15 +77,22 @@ public class Graph extends DotObject<GraphAttributes> {
 	}
 
 	public Node newNode(String aString) {
-		return (Node) addObject(new Node(aString));
+		return (Node) addGraphElement(new Node(aString));
+	}
+
+	private Node getNodeNamed(String aString) {
+		if (nodes.containsKey(aString))
+			return nodes.get(aString);
+		return (Node) newNode(aString);
 	}
 
 	public Edge newEdge(String aFromName, String aToName) {
-		return (Edge) addObject(new Edge(aFromName, aToName, type));
+		Edge edge = new Edge(getNodeNamed(aFromName), getNodeNamed(aToName), type);
+		return (Edge) addGraphElement(edge);
 	}
 
 	public Subgraph newSubgraph(String aName) {
-		return (Subgraph) addObject(new Subgraph(aName, type));
+		return (Subgraph) addGraphElement(new Subgraph(aName, type));
 	}
 
 	@Override
