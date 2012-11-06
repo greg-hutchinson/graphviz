@@ -13,6 +13,10 @@ public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
 		graphType = aGraphType;
 	}
 
+	protected Edge(Node aFromNode, Node aToNode, GraphType aType) {
+		this(aFromNode.getName(), aToNode.getName(), aType);
+	}
+
 	public String getDefinition() {
 		return from + " " + getEdgeString() + " " + to;
 	}
