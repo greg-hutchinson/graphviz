@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import ca.attractors.util.Strings;
+
 public class Node extends DotObject<NodeAttributes> implements IGraphElement {
 	private String name;
 
@@ -15,7 +17,7 @@ public class Node extends DotObject<NodeAttributes> implements IGraphElement {
 
 	@Override
 	protected CharSequence getDefinition() {
-		return name;
+		return Strings.quoted(name);
 	}
 
 	public String getName() {

@@ -7,7 +7,7 @@ public class GraphTest extends TestCase {
 	public void testToDotString() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		graph.setBackgroundColor("red");
-		assertEquals("digraph name {\ngraph [bgcolor=\"red\"]\n}\n", graph.toDotString());
+		assertEquals("digraph \"name\" {\ngraph [bgcolor=\"red\"]\n}\n", graph.toDotString());
 	}
 
 	public void testToDotStringComplex() {
@@ -23,11 +23,11 @@ public class GraphTest extends TestCase {
 
 	private String getExpectedComplexString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("digraph name {\n");
+		builder.append("digraph \"name\" {\n");
 		builder.append("graph [bgcolor=\"red\"]\n");
-		builder.append("node1\n");
-		builder.append("a -> b\n");
-		builder.append("subgraph sub1 {\n");
+		builder.append("\"node1\"\n");
+		builder.append("\"a\" -> \"b\"\n");
+		builder.append("subgraph \"sub1\" {\n");
 		builder.append("}\n}\n");
 		return builder.toString();
 	}
