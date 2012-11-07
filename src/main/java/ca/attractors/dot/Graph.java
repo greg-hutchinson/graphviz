@@ -78,16 +78,16 @@ public class Graph extends DotObject<GraphAttributes> {
 		return type.toString();
 	}
 
-	public Node newNode(String aString) {
-		return (Node) addGraphElement(new Node(aString));
-	}
-
 	private Node getNodeNamed(String aString) {
 		if (nodes.containsKey(aString))
 			return nodes.get(aString);
 		//FIXME, GH - Not sure about this yet. Changing my mind.		
 		//return newNode(aString);
 		return new Node(aString);
+	}
+
+	public Node newNode(String aString) {
+		return (Node) addGraphElement(new Node(aString));
 	}
 
 	public Edge newEdge(String aFromName, String aToName) {
@@ -97,6 +97,18 @@ public class Graph extends DotObject<GraphAttributes> {
 
 	public Subgraph newSubgraph(String aName) {
 		return (Subgraph) addGraphElement(new Subgraph(aName, type));
+	}
+
+	public NodeAttributes newNodeAttributes() {
+		return (NodeAttributes) addGraphElement(new NodeAttributes());
+	}
+
+	public EdgeAttributes newEdgeAttributes() {
+		return (EdgeAttributes) addGraphElement(new EdgeAttributes());
+	}
+
+	public GraphAttributes newGraphAttributes() {
+		return (GraphAttributes) addGraphElement(new GraphAttributes());
 	}
 
 	@Override
