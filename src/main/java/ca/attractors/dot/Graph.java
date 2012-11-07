@@ -83,7 +83,9 @@ public class Graph extends DotObject<GraphAttributes> {
 	private Node getNodeNamed(String aString) {
 		if (nodes.containsKey(aString))
 			return nodes.get(aString);
-		return (Node) newNode(aString);
+		//FIXME, GH - Not sure about this yet. Changing my mind.		
+		//return newNode(aString);
+		return new Node(aString);
 	}
 
 	public Edge newEdge(String aFromName, String aToName) {
