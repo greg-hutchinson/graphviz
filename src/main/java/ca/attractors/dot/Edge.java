@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import ca.attractors.util.Strings;
+
 public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
 
 	private String from;
@@ -18,7 +20,11 @@ public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
 	}
 
 	public String getDefinition() {
-		return from + " " + getEdgeString() + " " + to;
+		return Strings.quoted(from) + " " + getEdgeString() + " " + Strings.quoted(to);
+	}
+
+	protected String getQuotedFrom() {
+		return Strings.quoted(from);
 	}
 
 	@Override

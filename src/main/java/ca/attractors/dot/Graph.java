@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ca.attractors.util.Strings;
+
 public class Graph extends DotObject<GraphAttributes> {
 	private String name;
 	private GraphType type;
@@ -68,7 +70,7 @@ public class Graph extends DotObject<GraphAttributes> {
 	protected CharSequence getDefinition() {
 		String textName = name;
 		if (name != "")
-			textName += " ";
+			textName = Strings.quoted(textName) + " ";
 		return getGraphTypeString() + " " + textName + "{\n";
 	}
 
