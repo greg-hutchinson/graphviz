@@ -51,10 +51,9 @@ public class Graph extends DotObject<GraphAttributes> {
 
 	@Override
 	protected CharSequence getDefinitionBody() {
-		if (getAttributes().isEmpty())
-			return "";
 		StringBuilder builder = new StringBuilder();
-		builder.append(getAttributes().toDotString());
+		if (!getAttributes().isEmpty())
+			builder.append(getAttributes().toDotString());
 		for (IGraphElement type : objects) {
 			builder.append(type.toDotString());
 		}
