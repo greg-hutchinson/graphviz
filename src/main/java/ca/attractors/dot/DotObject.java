@@ -1,6 +1,12 @@
 package ca.attractors.dot;
 
 public abstract class DotObject<M extends DotObjectAttributes> extends DotElement {
+	private static final String FONTNAME = "fontname";
+	private static final String URL = "URL";
+	private static final String COLOR_SCHEME = "colorscheme";
+	private static final String COMMENT = "comment";
+	private static final String FONTSIZE = "fontsize";
+
 	public DotObject(M aAttributes) {
 		attributes = aAttributes;
 	}
@@ -11,44 +17,55 @@ public abstract class DotObject<M extends DotObjectAttributes> extends DotElemen
 		return attributes;
 	}
 
+	protected String get(String aKey) {
+		return attributes.get(aKey);
+	}
+
+	protected void set(String aKey, String aValue) {
+		if (aValue == null || aValue == "") {
+//			attributes.remove(aKey);
+			return;
+		}
+//		attributes.put(aKey, aValue);
+	}
 
 	public String getFontname() {
-		return attributes.getFontname();
+		return get(FONTNAME);
 	}
 
 	public void setFontname(String aFontname) {
-		attributes.setFontname(aFontname);
+		set(FONTNAME, aFontname);
 	}
 
 	public String getFontsize() {
-		return attributes.getFontsize();
+		return get(FONTSIZE);
 	}
 
 	public void setFontsize(String aFontsize) {
-		attributes.setFontsize(aFontsize);
+		set(FONTSIZE, aFontsize);
 	}
 	public String getUrl() {
-		return attributes.getUrl();
+		return get(URL);
 	}
 
 	public void setUrl(String aUrl) {
-		attributes.setUrl(aUrl);
+		set(URL, aUrl);
 	}
 
 	public String getColorScheme() {
-		return getAttributes().getColorScheme();
+		return get(COLOR_SCHEME);
 	}
 
 	public void setColorScheme(String aColorScheme) {
-		getAttributes().setColorScheme(aColorScheme);
+		set(COLOR_SCHEME, aColorScheme);
 	}
 
 	public String getComment() {
-		return getAttributes().getComment();
+		return get(COMMENT);
 	}
 
 	public void setComment(String aComment) {
-		getAttributes().setComment(aComment);
+		set(COMMENT, aComment);
 	}
 
 }
