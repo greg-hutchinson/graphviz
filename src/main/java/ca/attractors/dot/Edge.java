@@ -2,8 +2,7 @@ package ca.attractors.dot;
 
 import ca.attractors.util.Strings;
 
-public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
-
+public class Edge extends DotObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String COLOR = "color";
@@ -15,7 +14,6 @@ public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
 	private GraphType graphType;
 
 	protected Edge(String aFrom, String aTo, GraphType aGraphType) {
-		super(new EdgeAttributes());
 		from = aFrom;
 		to = aTo;
 		graphType = aGraphType;
@@ -35,7 +33,7 @@ public class Edge extends DotObject<EdgeAttributes> implements IGraphElement {
 
 	@Override
 	protected CharSequence getDefinitionBody() {
-		return getAttributes().getDefinitionBody();
+		return getAttributesDefinitionBody();
 	}
 
 	public String getLabel() {

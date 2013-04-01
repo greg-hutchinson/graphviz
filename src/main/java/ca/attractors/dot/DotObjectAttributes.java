@@ -7,9 +7,6 @@ import java.util.Map.Entry;
 public abstract class DotObjectAttributes extends DotElement implements IGraphElement {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
-	private static final String COLOR_SCHEME = "colorscheme";
-	private static final String COMMENT = "comment";
-	private static final String FONTSIZE = "fontsize";
 
 	private Map<String, String> attributes = new HashMap<String, String>();
 

@@ -7,7 +7,7 @@ import java.util.Map;
 
 import ca.attractors.util.Strings;
 
-public class Graph extends DotObject<GraphAttributes> {
+public class Graph extends DotObject {
 	private static final String BG_COLOR = "bgcolor";
 
 	private String name;
@@ -20,7 +20,7 @@ public class Graph extends DotObject<GraphAttributes> {
 	}
 
 	public Graph(String aName, GraphType aGraphType) {
-		super(new GraphAttributes());
+		super();
 		if (aName == null)
 			throw new NullPointerException("aName must not be null");
 		name = aName;
@@ -55,12 +55,13 @@ public class Graph extends DotObject<GraphAttributes> {
 	protected CharSequence getDefinitionBody() {
 		StringBuilder builder = new StringBuilder();
 		if (!getAttributes().isEmpty())
-			builder.append(getAttributes().toDotString());
+			builder.append(attributesToDotString());
 		for (IGraphElement type : objects) {
 			builder.append(type.toDotString());
 		}
 		return builder.toString();
 	}
+
 
 	@Override
 	protected CharSequence getDefinitionEnd() {

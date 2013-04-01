@@ -2,7 +2,7 @@ package ca.attractors.dot;
 
 import ca.attractors.util.Strings;
 
-public class Node extends DotObject<NodeAttributes> implements IGraphElement {
+public class Node extends DotObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String STYLE = "style";
@@ -10,13 +10,12 @@ public class Node extends DotObject<NodeAttributes> implements IGraphElement {
 	private String name;
 
 	protected Node(String aName) {
-		super(new NodeAttributes());
 		name = aName;
 	}
 
 	@Override
 	protected CharSequence getDefinitionBody() {
-		return getAttributes().getDefinitionBody();
+		return getAttributesDefinitionBody();
 	}
 
 	@Override
