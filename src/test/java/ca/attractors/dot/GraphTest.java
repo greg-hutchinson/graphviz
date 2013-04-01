@@ -16,8 +16,8 @@ public class GraphTest extends TestCase {
 //		node.setFontname("abc");
 		graph.setBackgroundColor("red");
 		Edge edge = graph.newEdge("a", "b");
-		EdgeAttributes edgeAttributes = graph.newEdgeAttributes();
-		edgeAttributes.setColor("blue");
+//		EdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+//		edgeAttributes.set(Edge.COLOR, "blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		String actualString = graph.toDotString();

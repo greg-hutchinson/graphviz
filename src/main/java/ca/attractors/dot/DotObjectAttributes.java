@@ -47,40 +47,12 @@ public abstract class DotObjectAttributes extends DotElement implements IGraphEl
 		return get(FONTNAME);
 	}
 
-	public void setFontname(String aFontname) {
-		set(FONTNAME, aFontname);
-	}
-
-	public String getFontsize() {
-		return get(FONTSIZE);
-	}
-
-	public void setFontsize(String aFontsize) {
-		set(FONTSIZE, aFontsize);
-	}
-
 	public String getUrl() {
 		return get(URL);
 	}
 
 	public void setUrl(String aUrl) {
 		set(URL, aUrl);
-	}
-
-	public String getColorScheme() {
-		return get(COLOR_SCHEME);
-	}
-
-	public void setColorScheme(String aColorScheme) {
-		set(COLOR_SCHEME, aColorScheme);
-	}
-
-	public String getComment() {
-		return get(COMMENT);
-	}
-
-	public void setComment(String aComment) {
-		set(COMMENT, aComment);
 	}
 
 }
