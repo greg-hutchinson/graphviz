@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import java.io.PrintStream;
+
 import ca.attractors.util.Strings;
 
 public class Node extends DotObject implements IGraphElement {
@@ -13,20 +15,20 @@ public class Node extends DotObject implements IGraphElement {
 		name = aName;
 	}
 
-	@Override
-	protected CharSequence getDefinitionBody() {
-		return getAttributesDefinitionBody();
-	}
-
-	@Override
-	protected CharSequence getDefinition() {
-		return Strings.quoted(name);
+	public void toDotStringOn(PrintStream aPrintStream) {
+		aPrintStream.append(getDefinition());
+		aPrintStream.append(attributesToDotString());
+		aPrintStream.append("\n");
 	}
 
 //	@Override
-//	protected CharSequence getDefinition() {
-//		return "Node";
+//	protected CharSequence getDefinitionBody() {
+//		return getAttributesDefinitionBody();
 //	}
+
+	protected CharSequence getDefinition() {
+		return Strings.quoted(name);
+	}
 
 	public String getName() {
 		return name;

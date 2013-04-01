@@ -2,6 +2,7 @@ package ca.attractors.dot;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
@@ -23,8 +24,18 @@ public abstract class DotObject extends DotElement {
 	}
 
 	protected String attributesToDotString() {
-		// TODO Auto-generated method stub
-		return null;
+		if (attributes.isEmpty())
+			return "";
+		StringBuilder builder = new StringBuilder();
+		builder.append(" [");
+		String comma = "";
+		for (Entry<String, IDotAttributeValue> entry : attributes.entrySet()) {
+			builder.append(comma + entry.getKey() + "=\"" + entry.getValue().getValue() + "\"");
+			comma = ", ";
+		}
+		builder.append(']');
+		return builder.toString();
+
 	}
 
 	protected CharSequence getAttributesDefinitionBody() {
