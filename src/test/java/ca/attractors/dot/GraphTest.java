@@ -20,7 +20,8 @@ public class GraphTest extends TestCase {
 		edgeAttributes.setColor("blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
-		assertEquals(getExpectedComplexString(), graph.toDotString());
+		String actualString = graph.toDotString();
+		assertEquals(getExpectedComplexString(), actualString);
 	}
 
 	private String getExpectedComplexString() {
@@ -31,6 +32,7 @@ public class GraphTest extends TestCase {
 		builder.append("\"a\" -> \"b\"\n");
 		builder.append("Edge [color=\"blue\"]\n");
 		builder.append("subgraph \"sub1\" {\n");
+		builder.append("\"d\"\n");
 		builder.append("}\n}\n");
 		return builder.toString();
 	}
