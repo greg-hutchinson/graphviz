@@ -1,32 +1,47 @@
 package ca.attractors.dot;
 
-public abstract class DotObject<M extends DotObjectAttributes> extends DotElement {
+import java.util.HashMap;
+import java.util.Map;
+
+import ca.attractors.dot.attribute.type.IDotAttributeValue;
+import ca.attractors.dot.attribute.type.StringDotAttributeValue;
+
+public abstract class DotObject extends DotElement {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
 	private static final String COMMENT = "comment";
 	private static final String FONTSIZE = "fontsize";
 
-	public DotObject(M aAttributes) {
-		attributes = aAttributes;
+	private Map<String, IDotAttributeValue> attributes = new HashMap<String, IDotAttributeValue>();
+
+	public DotObject() {
 	}
 
-	private M attributes;
-
-	protected M getAttributes() {
+	protected Map<String, IDotAttributeValue> getAttributes() {
 		return attributes;
 	}
 
+	protected String attributesToDotString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	protected CharSequence getAttributesDefinitionBody() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	protected String get(String aKey) {
-		return attributes.get(aKey);
+		return attributes.get(aKey).getValue();
 	}
 
 	protected void set(String aKey, String aValue) {
 		if (aValue == null || aValue == "") {
-//			attributes.remove(aKey);
+			attributes.remove(aKey);
 			return;
 		}
-//		attributes.put(aKey, aValue);
+		attributes.put(aKey, new StringDotAttributeValue(aValue));
 	}
 
 	public String getFontname() {
