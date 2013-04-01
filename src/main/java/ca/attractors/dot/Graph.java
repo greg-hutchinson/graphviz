@@ -1,5 +1,6 @@
 package ca.attractors.dot;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,7 +52,12 @@ public class Graph extends DotObject {
 		return aType;
 	}
 
-	@Override
+	public void toDotStringOn(PrintStream aPrintStream) {
+		aPrintStream.append(getDefinition());
+		aPrintStream.append(attributesToDotString());
+		aPrintStream.append("}\n");
+	}
+
 	protected CharSequence getDefinitionBody() {
 		StringBuilder builder = new StringBuilder();
 		if (!getAttributes().isEmpty())
@@ -63,12 +69,6 @@ public class Graph extends DotObject {
 	}
 
 
-	@Override
-	protected CharSequence getDefinitionEnd() {
-		return "}\n";
-	}
-
-	@Override
 	protected CharSequence getDefinition() {
 		String textName = name;
 		if (name != "")

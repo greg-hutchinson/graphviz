@@ -7,7 +7,8 @@ public class GraphTest extends TestCase {
 	public void testToDotString() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		graph.setBackgroundColor("red");
-		assertEquals("digraph \"name\" {\ngraph [bgcolor=\"red\"]\n}\n", graph.toDotString());
+		String actualString = graph.toDotString();
+		assertEquals("digraph \"name\" {\ngraph [bgcolor=\"red\"]\n}\n", actualString);
 	}
 
 	public void testToDotStringComplex() {

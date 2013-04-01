@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import java.io.PrintStream;
+
 import ca.attractors.util.Strings;
 
 public class Edge extends DotObject implements IGraphElement {
@@ -31,10 +33,12 @@ public class Edge extends DotObject implements IGraphElement {
 		return Strings.quoted(from);
 	}
 
-	@Override
-	protected CharSequence getDefinitionBody() {
-		return getAttributesDefinitionBody();
+	public void toDotStringOn(PrintStream aPrintStream) {
+		aPrintStream.append(getDefinition());
+		aPrintStream.append(attributesToDotString());
+		aPrintStream.append("\n");
 	}
+
 
 	public String getLabel() {
 		return get(LABEL);
