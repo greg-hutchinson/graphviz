@@ -12,7 +12,7 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 
 
 	public String getLabel() {
-		return get(LABEL);
+		return getString(LABEL);
 	}
 
 	public void setLabel(String aLabel) {
@@ -20,7 +20,7 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 	}
 
 	public String getFillColor() {
-		return get(FILLCOLOR);
+		return getString(FILLCOLOR);
 	}
 
 	public void setFillColor(String aFillColor) {
@@ -28,7 +28,7 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 	}
 
 	public String getStyle() {
-		return get(STYLE);
+		return getString(STYLE);
 	}
 
 	public void setStyle(String aStyle) {

@@ -62,8 +62,12 @@ public abstract class AbstractDotLanguageObject {
 		return attributes.isEmpty();
 	}
 
-	protected final String get(String aKey) {
-		return attributes.get(aKey).getValue();
+	protected final String getString(String aKey) {
+		return get(aKey).getValue();
+	}
+
+	protected final IDotAttributeValue get(String aKey) {
+		return attributes.get(aKey);
 	}
 
 	protected final void set(String aKey, String aValue) {
@@ -80,7 +84,7 @@ public abstract class AbstractDotLanguageObject {
 
 
 	public String getFontname() {
-		return get(FONTNAME);
+		return getString(FONTNAME);
 	}
 
 	public void setFontname(String aFontname) {
@@ -88,7 +92,7 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	public String getFontsize() {
-		return get(FONTSIZE);
+		return getString(FONTSIZE);
 	}
 
 	public void setFontsize(String aFontsize) {
@@ -96,7 +100,7 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	public String getUrl() {
-		return get(URL);
+		return getString(URL);
 	}
 
 	public void setUrl(String aUrl) {
@@ -104,7 +108,7 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	public String getColorScheme() {
-		return get(COLOR_SCHEME);
+		return getString(COLOR_SCHEME);
 	}
 
 	public void setColorScheme(String aColorScheme) {
@@ -112,7 +116,7 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	public String getComment() {
-		return get(COMMENT);
+		return getString(COMMENT);
 	}
 
 	public void setComment(String aComment) {
