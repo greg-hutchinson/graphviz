@@ -14,11 +14,10 @@ public class GraphTest extends TestCase {
 	public void testToDotStringComplex() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		Node node = graph.newNode("node1");
-//		node.setFontname("abc");
 		graph.setBackgroundColor("red");
-		Edge edge = graph.newEdge("a", "b");
-//		EdgeAttributes edgeAttributes = graph.newEdgeAttributes();
-//		edgeAttributes.set(Edge.COLOR, "blue");
+		IGraphElement edge = graph.newEdge("a", "b");
+		EdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+		edgeAttributes.set(Edge.COLOR, "blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		String actualString = graph.toDotString();
