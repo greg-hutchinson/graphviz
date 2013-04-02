@@ -8,7 +8,7 @@ public enum ArrowShapeType implements IDotAttributeValue {
 	DOT("dot"),
 	INV("inv"),
 	NONE("none"),
-	NORMAL("none"),
+    NORMAL("normal"),
 	TEE("tee"),
 	VEE("vee");
 	

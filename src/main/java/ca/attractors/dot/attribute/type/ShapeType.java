@@ -3,7 +3,7 @@ package ca.attractors.dot.attribute.type;
 public enum ShapeType implements IDotAttributeValue {
 	BOX("box"),
 	POLYGON("polygon"),
-	ELLIPSE("ellipise"),
+ ELLIPSE("ellipise"), //Typo???
 	OVAL("oval"),
 	CIRCLE("circle"),
 	POINT("point"),
@@ -54,7 +54,7 @@ public enum ShapeType implements IDotAttributeValue {
 	PROTEINSTAB("proteinstab"),
 	R_PROMOTER("tee"),
 	R_ARROW("rarrow"),
-	L_ARRPW("larrow"),
+	L_ARROW("larrow"),
 	L_PROMOTER("lpromoter");
 
 	private final String value;
