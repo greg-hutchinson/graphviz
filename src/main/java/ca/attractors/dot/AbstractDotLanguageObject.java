@@ -8,8 +8,18 @@ import java.util.Map.Entry;
 
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
+import ca.attractors.util.Strings;
 
-public abstract class AbstractGraphvizObject {
+/** 
+ * This class represents the abstraction of all the DOT Language defined objects. (See all concrete subclasses for the complete list) 
+ * and cross reference this with this link http://www.graphviz.org/content/dot-language . Note Not all languageElements have been implemented, only
+ * those that were deemed necessary.
+ * This is not to be confused with the Interface - IGraphElement which is used to document all objects (elements) that can be added to a Graph
+ */
+public abstract class AbstractDotLanguageObject {
+	/* Here the common attribute values are defined. Note: these must be valid for 
+	 * Graphs, Subgraphs, Nodes, and Edges.
+	 */
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
@@ -18,7 +28,7 @@ public abstract class AbstractGraphvizObject {
 
 	private Map<String, IDotAttributeValue> attributes = new HashMap<String, IDotAttributeValue>();
 
-	protected AbstractGraphvizObject() {
+	protected AbstractDotLanguageObject() {
 	}
 
 	public final String toDotString() {
@@ -28,6 +38,7 @@ public abstract class AbstractGraphvizObject {
 		return out.toString();
 	}
 
+	/* This method is sometimes overridden */
 	public void toDotStringOn(PrintStream aPrintStream) {
 		basicToDotStringOn(aPrintStream);
 	}
@@ -64,43 +75,43 @@ public abstract class AbstractGraphvizObject {
 	}
 
 
-	public final String getFontname() {
+	public String getFontname() {
 		return get(FONTNAME);
 	}
 
-	public final void setFontname(String aFontname) {
+	public void setFontname(String aFontname) {
 		set(FONTNAME, aFontname);
 	}
 
-	public final String getFontsize() {
+	public String getFontsize() {
 		return get(FONTSIZE);
 	}
 
-	public final void setFontsize(String aFontsize) {
+	public void setFontsize(String aFontsize) {
 		set(FONTSIZE, aFontsize);
 	}
 
-	public final String getUrl() {
+	public String getUrl() {
 		return get(URL);
 	}
 
-	public final void setUrl(String aUrl) {
+	public void setUrl(String aUrl) {
 		set(URL, aUrl);
 	}
 
-	public final String getColorScheme() {
+	public String getColorScheme() {
 		return get(COLOR_SCHEME);
 	}
 
-	public final void setColorScheme(String aColorScheme) {
+	public void setColorScheme(String aColorScheme) {
 		set(COLOR_SCHEME, aColorScheme);
 	}
 
-	public final String getComment() {
+	public String getComment() {
 		return get(COMMENT);
 	}
 
-	public final void setComment(String aComment) {
+	public void setComment(String aComment) {
 		set(COMMENT, aComment);
 	}
 
@@ -108,15 +119,19 @@ public abstract class AbstractGraphvizObject {
 		public String toString() {
 			if (attributes.isEmpty())
 				return "";
-			StringBuilder builder = new StringBuilder();
-			builder.append(" [");
+			return getAttributesString();
+		}
+
+		private String getAttributesString() {
 			String comma = "";
+			StringBuilder builder = new StringBuilder(" [");
 			for (Entry<String, IDotAttributeValue> entry : attributes.entrySet()) {
-				builder.append(comma + entry.getKey() + "=\"" + entry.getValue().getValue() + "\"");
+				builder.append(comma + entry.getKey());
+				builder.append("=");
+				builder.append(Strings.quoted(entry.getValue().getValue()));
 				comma = ", ";
 			}
-			builder.append(']');
-			return builder.toString();
+			return builder.toString() + "]";
 		}
 	}
 }

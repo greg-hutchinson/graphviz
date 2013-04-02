@@ -1,6 +1,10 @@
 package ca.attractors.dot;
 
-public abstract class AbstractEdgeAttributes extends AbstractGraphvizObject implements IGraphElement {
+/**
+ * This class represents all the attribute definitions for its subclasses. Normally there should be no other behaviour here other than
+ * the constants that defined the attribute names and the corresponding getters/setters.
+ */
+public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String COLOR = "color";
