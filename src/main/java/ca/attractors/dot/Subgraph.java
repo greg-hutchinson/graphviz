@@ -10,32 +10,4 @@ public class Subgraph extends Graph implements IGraphElement {
 		return "subgraph";
 	}
 
-	public String getColor() {
-		return null;
-	}
-
-	public void setColor(String aString) {
-	}
-
-	public void setStyle(String aStyle) {
-	}
-
-	public String getStyle() {
-		return null;
-	}
-
-	public void setFillColor(String aFillColor) {
-	}
-
-	public String getFillColor() {
-		return null;
-	}
-
-	public void setLabel(String aLabel) {
-	}
-
-	public String getLabel() {
-		return null;
-	}
-
 }

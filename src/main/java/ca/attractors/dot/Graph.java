@@ -8,8 +8,7 @@ import java.util.Map;
 
 import ca.attractors.util.Strings;
 
-public class Graph extends DotObject {
-	private static final String BG_COLOR = "bgcolor";
+public class Graph extends AbstractGraphAttributes {
 
 	private String name;
 	private GraphType type;
@@ -42,7 +41,7 @@ public class Graph extends DotObject {
 	}
 
 	protected CharSequence getDefinition() {
-		if (getAttributes().isEmpty())
+		if (isAttributesEmpty())
 			return "";
 		return "graph";
 	}
@@ -52,14 +51,6 @@ public class Graph extends DotObject {
 		if (name != "")
 			textName = Strings.quoted(textName) + " ";
 		return getGraphTypeString() + " " + textName + "{\n";
-	}
-
-	public void setBackgroundColor(String aString) {
-		set(BG_COLOR, aString);
-	}
-
-	public String getBackgroundColor() {
-		return get(BG_COLOR);
 	}
 
 	public String getName() {
@@ -109,8 +100,8 @@ public class Graph extends DotObject {
 		return (EdgeAttributes) addGraphElement(new EdgeAttributes());
 	}
 
-	public GraphAttributes newGraphAttributes() {
-		return (GraphAttributes) addGraphElement(new GraphAttributes());
+	public AbstractGraphAttributes newGraphAttributes() {
+		return (AbstractGraphAttributes) addGraphElement(new GraphAttributes());
 	}
 
 	@Override

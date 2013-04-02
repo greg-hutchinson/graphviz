@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
 
-public abstract class DotObject extends DotElement {
+public abstract class DotObject {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
@@ -19,10 +19,6 @@ public abstract class DotObject extends DotElement {
 	private Map<String, IDotAttributeValue> attributes = new HashMap<String, IDotAttributeValue>();
 
 	public DotObject() {
-	}
-
-	protected Map<String, IDotAttributeValue> getAttributes() {
-		return attributes;
 	}
 
 	public final String toDotString() {
@@ -37,10 +33,15 @@ public abstract class DotObject extends DotElement {
 	}
 
 	public final void basicToDotStringOn(PrintStream aPrintStream) {
-		aPrintStream.append(getDefinition());
-		aPrintStream.append(attributesToDotString());
-		aPrintStream.append("\n");
+		CharSequence sequence = getDefinition();
+		String string = attributesToDotString();
+		aPrintStream.append(sequence);
+		aPrintStream.append(string);
+		if (string.length() + sequence.length() > 0)
+			aPrintStream.append("\n");
 	}
+
+	protected abstract CharSequence getDefinition();
 
 	protected String attributesToDotString() {
 		if (attributes.isEmpty())
@@ -57,13 +58,15 @@ public abstract class DotObject extends DotElement {
 
 	}
 
-	protected abstract CharSequence getDefinition();
+	protected final boolean isAttributesEmpty() {
+		return attributes.isEmpty();
+	}
 
-	protected String get(String aKey) {
+	protected final String get(String aKey) {
 		return attributes.get(aKey).getValue();
 	}
 
-	protected void set(String aKey, String aValue) {
+	protected final void set(String aKey, String aValue) {
 		if (aValue == null || aValue == "") {
 			attributes.remove(aKey);
 			return;
