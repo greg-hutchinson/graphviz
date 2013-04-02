@@ -1,7 +1,7 @@
 package ca.attractors.dot;
 
 
-public abstract class AbstractNodeAttributes extends DotObject implements IGraphElement {
+public abstract class AbstractNodeAttributes extends AbstractGraphvizObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String STYLE = "style";
