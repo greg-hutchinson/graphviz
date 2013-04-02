@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -23,6 +25,23 @@ public abstract class DotObject extends DotElement {
 		return attributes;
 	}
 
+	public final String toDotString() {
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
+		PrintStream stream = new PrintStream(out);
+		toDotStringOn(stream);
+		return out.toString();
+	}
+
+	public void toDotStringOn(PrintStream aPrintStream) {
+		basicToDotStringOn(aPrintStream);
+	}
+
+	public final void basicToDotStringOn(PrintStream aPrintStream) {
+		aPrintStream.append(getDefinition());
+		aPrintStream.append(attributesToDotString());
+		aPrintStream.append("\n");
+	}
+
 	protected String attributesToDotString() {
 		if (attributes.isEmpty())
 			return "";
@@ -38,10 +57,7 @@ public abstract class DotObject extends DotElement {
 
 	}
 
-	protected CharSequence getAttributesDefinitionBody() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	protected abstract CharSequence getDefinition();
 
 	protected String get(String aKey) {
 		return attributes.get(aKey).getValue();
