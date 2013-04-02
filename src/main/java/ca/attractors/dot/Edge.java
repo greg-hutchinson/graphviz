@@ -22,10 +22,6 @@ public class Edge extends AbstractEdgeAttributes {
 		return Strings.quoted(from) + " " + getEdgeString() + " " + Strings.quoted(to);
 	}
 
-	protected String getQuotedFrom() {
-		return Strings.quoted(from);
-	}
-
 	private String getEdgeString() {
 		return graphType.getEdgeString();
 	}

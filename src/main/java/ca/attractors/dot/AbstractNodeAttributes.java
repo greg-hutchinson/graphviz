@@ -1,7 +1,11 @@
 package ca.attractors.dot;
 
+/**
+ * @see AbstractEdgeAttributes for the generic documentation for these types of classes 
+ * (i.e. AbstractXxxAttributes where Xxx is variable. )
+ **/
 
-public abstract class AbstractNodeAttributes extends AbstractGraphvizObject implements IGraphElement {
+public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String STYLE = "style";
