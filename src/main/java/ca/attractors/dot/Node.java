@@ -1,10 +1,8 @@
 package ca.attractors.dot;
 
-import java.io.PrintStream;
-
 import ca.attractors.util.Strings;
 
-public class Node extends NodeAttributes implements IGraphElement {
+public class Node extends AbstractNodeAttributes {
 
 	private String name;
 
@@ -12,17 +10,7 @@ public class Node extends NodeAttributes implements IGraphElement {
 		name = aName;
 	}
 
-	public void toDotStringOn(PrintStream aPrintStream) {
-		aPrintStream.append(getDefinition());
-		aPrintStream.append(attributesToDotString());
-		aPrintStream.append("\n");
-	}
-
-//	@Override
-//	protected CharSequence getDefinitionBody() {
-//		return getAttributesDefinitionBody();
-//	}
-
+	@Override
 	protected CharSequence getDefinition() {
 		return Strings.quoted(name);
 	}
