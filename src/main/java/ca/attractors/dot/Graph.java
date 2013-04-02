@@ -28,6 +28,32 @@ public class Graph extends DotObject {
 		type = aGraphType;
 	}
 
+	public void toDotStringOn(PrintStream aPrintStream) {
+		aPrintStream.append(getGraphString());
+		basicToDotStringOn(aPrintStream);
+		printComponentsOn(aPrintStream);
+		aPrintStream.append("}\n");
+	}
+
+	private void printComponentsOn(PrintStream aPrintStream) {
+		for (IGraphElement element : objects) {
+			aPrintStream.append(element.toDotString());
+		}
+	}
+
+	protected CharSequence getDefinition() {
+		if (getAttributes().isEmpty())
+			return "";
+		return "graph";
+	}
+
+	protected CharSequence getGraphString() {
+		String textName = name;
+		if (name != "")
+			textName = Strings.quoted(textName) + " ";
+		return getGraphTypeString() + " " + textName + "{\n";
+	}
+
 	public void setBackgroundColor(String aString) {
 		set(BG_COLOR, aString);
 	}
@@ -52,29 +78,6 @@ public class Graph extends DotObject {
 		return aType;
 	}
 
-	public void toDotStringOn(PrintStream aPrintStream) {
-		aPrintStream.append(getDefinition());
-		aPrintStream.append(attributesToDotString());
-		aPrintStream.append("}\n");
-	}
-
-	protected CharSequence getDefinitionBody() {
-		StringBuilder builder = new StringBuilder();
-		if (!getAttributes().isEmpty())
-			builder.append(attributesToDotString());
-		for (IGraphElement type : objects) {
-			builder.append(type.toDotString());
-		}
-		return builder.toString();
-	}
-
-
-	protected CharSequence getDefinition() {
-		String textName = name;
-		if (name != "")
-			textName = Strings.quoted(textName) + " ";
-		return getGraphTypeString() + " " + textName + "{\n";
-	}
 
 	protected String getGraphTypeString() {
 		return type.toString();
@@ -92,9 +95,9 @@ public class Graph extends DotObject {
 		return (Node) addGraphElement(new Node(aString));
 	}
 
-	public Edge newEdge(String aFromName, String aToName) {
-		Edge edge = new Edge(getNodeNamed(aFromName), getNodeNamed(aToName), type);
-		return (Edge) addGraphElement(edge);
+	public IGraphElement newEdge(String aFromName, String aToName) {
+		IGraphElement edge = new Edge(getNodeNamed(aFromName), getNodeNamed(aToName), type);
+		return (IGraphElement) addGraphElement(edge);
 	}
 
 	public Subgraph newSubgraph(String aName) {
