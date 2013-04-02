@@ -67,11 +67,15 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	protected final void set(String aKey, String aValue) {
-		if (aValue == null || aValue == "") {
+		set(aKey, new StringDotAttributeValue(aValue));
+	}
+
+	protected final void set(String aKey, IDotAttributeValue aValue) {
+		if (aValue == null || aValue.getValue().equals("")) {
 			attributes.remove(aKey);
 			return;
 		}
-		attributes.put(aKey, new StringDotAttributeValue(aValue));
+		attributes.put(aKey, aValue);
 	}
 
 

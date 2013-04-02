@@ -113,7 +113,7 @@ public class Graph extends AbstractGraphAttributes {
 
 	@Override
 	public boolean equals(Object aObj) {
-		if (!(aObj instanceof Node))
+		if (!(aObj instanceof Graph))
 			return false;
 		Graph other = (Graph) aObj;
 		return other.getName().equals(getName());
