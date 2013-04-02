@@ -13,15 +13,16 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 	private static final String STYLE = "style";
 	private static final String DIR = "dir";
 
-	public String getDirection() {
-		return get(DIR);
+	public DirType getDir() {
+		return (DirType) get(DIR);
 	}
 
 	public void setDir(DirType aDirType) {
-		set(LABEL, aDirType);
+		set(DIR, aDirType);
 	}
+
 	public String getLabel() {
-		return get(LABEL);
+		return getString(LABEL);
 	}
 
 	public void setLabel(String aLabel) {
@@ -29,7 +30,7 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 	}
 
 	public String getFillColor() {
-		return get(FILLCOLOR);
+		return getString(FILLCOLOR);
 	}
 
 	public void setFillColor(String aFillColor) {
@@ -37,7 +38,7 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 	}
 
 	public String getStyle() {
-		return get(STYLE);
+		return getString(STYLE);
 	}
 
 	public void setStyle(String aStyle) {
@@ -49,6 +50,6 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 	}
 
 	public String getColor() {
-		return get(COLOR);
+		return getString(COLOR);
 	}
 }

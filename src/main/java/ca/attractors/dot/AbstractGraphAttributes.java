@@ -13,7 +13,7 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 	}
 
 	public String getBackgroundColor() {
-		return get(BG_COLOR);
+		return getString(BG_COLOR);
 	}
 
 }
