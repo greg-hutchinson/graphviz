@@ -1,6 +1,10 @@
 package ca.attractors.dot;
 
-public class EdgeAttributes extends DotObject {
+public class EdgeAttributes extends DotObject implements IGraphElement {
+	private static final String LABEL = "label";
+	private static final String FILLCOLOR = "fillcolor";
+	private static final String COLOR = "color";
+	private static final String STYLE = "style";
 	@Override
 	protected CharSequence getDefinition() {
 		return "Edge";
@@ -26,19 +30,15 @@ public class EdgeAttributes extends DotObject {
 		return get(STYLE);
 	}
 
-	@Override
 	public void setStyle(String aStyle) {
 		set(STYLE, aStyle);
 	}
 
-	@Override
 	public void setColor(String aString) {
 		set(COLOR, aString);
 	}
 
-	@Override
 	public String getColor() {
 		return get(COLOR);
 	}
-
 }

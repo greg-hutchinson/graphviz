@@ -2,7 +2,7 @@ package ca.attractors.dot;
 
 import ca.attractors.util.Strings;
 
-public class Edge extends EdgeAttributes implements IGraphElement {
+public class Edge extends EdgeAttributes {
 	private String from;
 	private String to;
 	private GraphType graphType;
