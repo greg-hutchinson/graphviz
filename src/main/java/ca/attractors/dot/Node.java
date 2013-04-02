@@ -1,14 +1,27 @@
 package ca.attractors.dot;
 
+import java.io.PrintStream;
+
 import ca.attractors.util.Strings;
 
-public class Node extends DotObject implements IGraphElement {
+public class Node extends NodeAttributes implements IGraphElement {
+
 	private String name;
 
 	protected Node(String aName) {
 		name = aName;
 	}
 
+	public void toDotStringOn(PrintStream aPrintStream) {
+		aPrintStream.append(getDefinition());
+		aPrintStream.append(attributesToDotString());
+		aPrintStream.append("\n");
+	}
+
+//	@Override
+//	protected CharSequence getDefinitionBody() {
+//		return getAttributesDefinitionBody();
+//	}
 
 	protected CharSequence getDefinition() {
 		return Strings.quoted(name);
@@ -29,15 +42,6 @@ public class Node extends DotObject implements IGraphElement {
 
 	public int hashCode() {
 		return name.hashCode();
-	}
-
-
-	public String getColor() {
-		return null;
-	}
-
-
-	public void setColor(String aString) {
 	}
 
 }
