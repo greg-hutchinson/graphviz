@@ -1,7 +1,7 @@
 package ca.attractors.dot;
 
 
-public abstract class AbstractGraphAttributes extends DotObject {
+public abstract class AbstractGraphAttributes extends AbstractGraphvizObject {
 	private static final String BG_COLOR = "bgcolor";
 
 	public void setBackgroundColor(String aString) {

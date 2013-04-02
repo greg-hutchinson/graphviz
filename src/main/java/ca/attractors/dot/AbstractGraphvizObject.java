@@ -9,7 +9,7 @@ import java.util.Map.Entry;
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
 
-public abstract class DotObject {
+public abstract class AbstractGraphvizObject {
 	private static final String FONTNAME = "fontname";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
@@ -18,7 +18,7 @@ public abstract class DotObject {
 
 	private Map<String, IDotAttributeValue> attributes = new HashMap<String, IDotAttributeValue>();
 
-	protected DotObject() {
+	protected AbstractGraphvizObject() {
 	}
 
 	public final String toDotString() {
