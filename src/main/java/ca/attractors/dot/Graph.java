@@ -23,6 +23,8 @@ public class Graph extends AbstractGraphAttributes {
 		super();
 		if (aName == null)
 			throw new NullPointerException("aName must not be null");
+		if (aGraphType == null)
+			throw new NullPointerException("aGraphType must not be null");
 		name = aName;
 		type = aGraphType;
 	}
@@ -40,6 +42,7 @@ public class Graph extends AbstractGraphAttributes {
 		}
 	}
 
+	@Override
 	protected CharSequence getDefinition() {
 		if (isAttributesEmpty())
 			return "";
@@ -86,9 +89,9 @@ public class Graph extends AbstractGraphAttributes {
 		return (Node) addGraphElement(new Node(aString));
 	}
 
-	public IGraphElement newEdge(String aFromName, String aToName) {
-		IGraphElement edge = new Edge(getNodeNamed(aFromName), getNodeNamed(aToName), type);
-		return (IGraphElement) addGraphElement(edge);
+	public Edge newEdge(String aFromName, String aToName) {
+		Edge edge = new Edge(getNodeNamed(aFromName), getNodeNamed(aToName), type);
+		return (Edge) addGraphElement(edge);
 	}
 
 	public Subgraph newSubgraph(String aName) {
@@ -100,8 +103,12 @@ public class Graph extends AbstractGraphAttributes {
 		return (EdgeAttributes) addGraphElement(new EdgeAttributes());
 	}
 
-	public AbstractGraphAttributes newGraphAttributes() {
-		return (AbstractGraphAttributes) addGraphElement(new GraphAttributes());
+	public NodeAttributes newNodeAttributes() {
+		return (NodeAttributes) addGraphElement(new NodeAttributes());
+	}
+
+	public GraphAttributes newGraphAttributes() {
+		return (GraphAttributes) addGraphElement(new GraphAttributes());
 	}
 
 	@Override

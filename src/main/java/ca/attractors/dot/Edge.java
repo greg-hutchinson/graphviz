@@ -2,7 +2,7 @@ package ca.attractors.dot;
 
 import ca.attractors.util.Strings;
 
-public class Edge extends EdgeAttributes {
+public class Edge extends AbstractEdgeAttributes {
 	private String from;
 	private String to;
 	private GraphType graphType;
@@ -17,6 +17,7 @@ public class Edge extends EdgeAttributes {
 		this(aFromNode.getName(), aToNode.getName(), aType);
 	}
 
+	@Override
 	public String getDefinition() {
 		return Strings.quoted(from) + " " + getEdgeString() + " " + Strings.quoted(to);
 	}

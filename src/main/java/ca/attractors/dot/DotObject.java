@@ -18,7 +18,7 @@ public abstract class DotObject {
 
 	private Map<String, IDotAttributeValue> attributes = new HashMap<String, IDotAttributeValue>();
 
-	public DotObject() {
+	protected DotObject() {
 	}
 
 	public final String toDotString() {
@@ -43,19 +43,8 @@ public abstract class DotObject {
 
 	protected abstract CharSequence getDefinition();
 
-	protected String attributesToDotString() {
-		if (attributes.isEmpty())
-			return "";
-		StringBuilder builder = new StringBuilder();
-		builder.append(" [");
-		String comma = "";
-		for (Entry<String, IDotAttributeValue> entry : attributes.entrySet()) {
-			builder.append(comma + entry.getKey() + "=\"" + entry.getValue().getValue() + "\"");
-			comma = ", ";
-		}
-		builder.append(']');
-		return builder.toString();
-
+	protected final String attributesToDotString() {
+		return new AttributeStringBuilder().toString();
 	}
 
 	protected final boolean isAttributesEmpty() {
@@ -74,43 +63,60 @@ public abstract class DotObject {
 		attributes.put(aKey, new StringDotAttributeValue(aValue));
 	}
 
-	public String getFontname() {
+
+	public final String getFontname() {
 		return get(FONTNAME);
 	}
 
-	public void setFontname(String aFontname) {
+	public final void setFontname(String aFontname) {
 		set(FONTNAME, aFontname);
 	}
 
-	public String getFontsize() {
+	public final String getFontsize() {
 		return get(FONTSIZE);
 	}
 
-	public void setFontsize(String aFontsize) {
+	public final void setFontsize(String aFontsize) {
 		set(FONTSIZE, aFontsize);
 	}
-	public String getUrl() {
+
+	public final String getUrl() {
 		return get(URL);
 	}
 
-	public void setUrl(String aUrl) {
+	public final void setUrl(String aUrl) {
 		set(URL, aUrl);
 	}
 
-	public String getColorScheme() {
+	public final String getColorScheme() {
 		return get(COLOR_SCHEME);
 	}
 
-	public void setColorScheme(String aColorScheme) {
+	public final void setColorScheme(String aColorScheme) {
 		set(COLOR_SCHEME, aColorScheme);
 	}
 
-	public String getComment() {
+	public final String getComment() {
 		return get(COMMENT);
 	}
 
-	public void setComment(String aComment) {
+	public final void setComment(String aComment) {
 		set(COMMENT, aComment);
 	}
 
+	class AttributeStringBuilder {
+		public String toString() {
+			if (attributes.isEmpty())
+				return "";
+			StringBuilder builder = new StringBuilder();
+			builder.append(" [");
+			String comma = "";
+			for (Entry<String, IDotAttributeValue> entry : attributes.entrySet()) {
+				builder.append(comma + entry.getKey() + "=\"" + entry.getValue().getValue() + "\"");
+				comma = ", ";
+			}
+			builder.append(']');
+			return builder.toString();
+		}
+	}
 }

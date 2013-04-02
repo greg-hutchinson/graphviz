@@ -16,7 +16,7 @@ public class GraphTest extends TestCase {
 		Node node = graph.newNode("node1");
 		graph.setBackgroundColor("red");
 		IGraphElement edge = graph.newEdge("a", "b");
-		EdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+		AbstractEdgeAttributes edgeAttributes = graph.newEdgeAttributes();
 		edgeAttributes.setColor("blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
