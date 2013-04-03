@@ -2,7 +2,7 @@ package ca.attractors.dot;
 
 import junit.framework.TestCase;
 
-public class DotTestCase extends TestCase {
+public abstract class DotTestCase extends TestCase {
 
 	/**
 	 * The method will assert that anActualDotString matches aNonAttributePart and that all the key value pairs in anExpectedAttributeListString
