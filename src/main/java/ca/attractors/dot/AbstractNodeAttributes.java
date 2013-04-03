@@ -1,6 +1,6 @@
 package ca.attractors.dot;
 
-import ca.attractors.dot.attribute.type.IDotColor;
+import ca.attractors.dot.color.IDotColor;
 
 /**
  * @see AbstractEdgeAttributes for the generic documentation for these types of classes 
