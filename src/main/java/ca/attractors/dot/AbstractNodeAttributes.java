@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.attribute.type.IDotColor;
+
 /**
  * @see AbstractEdgeAttributes for the generic documentation for these types of classes 
  * (i.e. AbstractXxxAttributes where Xxx is variable. )
@@ -19,11 +21,11 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 		set(LABEL, aLabel);
 	}
 
-	public String getFillColor() {
-		return getString(FILLCOLOR);
+	public IDotColor getFillColor() {
+		return (IDotColor) get(FILLCOLOR);
 	}
 
-	public void setFillColor(String aFillColor) {
+	public void setFillColor(IDotColor aFillColor) {
 		set(FILLCOLOR, aFillColor);
 	}
 
