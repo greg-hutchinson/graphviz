@@ -13,15 +13,28 @@ public class GraphTest extends TestCase {
 
 	public void testToDotStringComplex() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
-		Node node = graph.newNode("node1");
+		graph.newNode("node1");
 		graph.setBackgroundColor("red");
-		IGraphElement edge = graph.newEdge("a", "b");
-		AbstractEdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+		graph.newEdge("a", "b");
+		DefaultEdgeAttributes edgeAttributes = graph.newEdgeAttributes();
 		edgeAttributes.setColor("blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		String actualString = graph.toDotString();
 		assertEquals(getExpectedComplexString(), actualString);
+	}
+
+	public static void main(String[] args) {
+		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		graph.newNode("node1");
+		graph.setBackgroundColor("red");
+		graph.newEdge("a", "b");
+		DefaultEdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+		edgeAttributes.setColor("blue");
+		Subgraph subgraph = graph.newSubgraph("sub1");
+		subgraph.newNode("d");
+		String actualString = graph.toDotString();
+		System.out.println(actualString);
 	}
 
 	private String getExpectedComplexString() {

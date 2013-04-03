@@ -44,7 +44,7 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	public final void basicToDotStringOn(PrintStream aPrintStream) {
-		CharSequence sequence = getDefinition();
+		String sequence = getDefinition();
 		String string = attributesToDotString();
 		aPrintStream.append(sequence);
 		aPrintStream.append(string);
@@ -52,7 +52,7 @@ public abstract class AbstractDotLanguageObject {
 			aPrintStream.append("\n");
 	}
 
-	protected abstract CharSequence getDefinition();
+	protected abstract String getDefinition();
 
 	protected final String attributesToDotString() {
 		return new AttributeStringBuilder().toString();

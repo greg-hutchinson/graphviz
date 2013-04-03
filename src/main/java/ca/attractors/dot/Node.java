@@ -11,7 +11,7 @@ public class Node extends AbstractNodeAttributes {
 	}
 
 	@Override
-	protected CharSequence getDefinition() {
+	protected String getDefinition() {
 		return Strings.quoted(name);
 	}
 

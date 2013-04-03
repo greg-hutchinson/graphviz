@@ -11,6 +11,5 @@ public class EdgeTest extends DotTestCase {
 		edge.setDir(DirType.BOTH);
 		assertDotStringOnlyContains("\"from\" -> \"to\"", "label=lab, fillcolor=blue, dir=both", edge.toDotString());
 	}
-
 }
 
