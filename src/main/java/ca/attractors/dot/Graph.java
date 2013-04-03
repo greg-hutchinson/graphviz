@@ -43,7 +43,7 @@ public class Graph extends AbstractGraphAttributes {
 	}
 
 	@Override
-	protected CharSequence getDefinition() {
+	protected String getDefinition() {
 		if (isAttributesEmpty())
 			return "";
 		return "graph";
@@ -99,16 +99,16 @@ public class Graph extends AbstractGraphAttributes {
 	}
 
 
-	public EdgeAttributes newEdgeAttributes() {
-		return (EdgeAttributes) addGraphElement(new EdgeAttributes());
+	public DefaultEdgeAttributes newEdgeAttributes() {
+		return (DefaultEdgeAttributes) addGraphElement(new DefaultEdgeAttributes());
 	}
 
-	public NodeAttributes newNodeAttributes() {
-		return (NodeAttributes) addGraphElement(new NodeAttributes());
+	public DefaultNodeAttributes newNodeAttributes() {
+		return (DefaultNodeAttributes) addGraphElement(new DefaultNodeAttributes());
 	}
 
-	public GraphAttributes newGraphAttributes() {
-		return (GraphAttributes) addGraphElement(new GraphAttributes());
+	public DefaultGraphAttributes newGraphAttributes() {
+		return (DefaultGraphAttributes) addGraphElement(new DefaultGraphAttributes());
 	}
 
 	@Override
