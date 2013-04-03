@@ -1,5 +1,10 @@
 package ca.attractors.dot;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import junit.framework.Assert;
+
 /**
  * Usually this is a bad idea. (Writing code in a test case)
  * However, with this said, I am trying out since I am comparing a lot of strings
@@ -14,30 +19,55 @@ package ca.attractors.dot;
  */
 
 public class ExpectedAttributesStringBuilderAsserter {
-	private String input;
+	private String nonAttributePart;
+	private String expectedAttributeListString;
+	private String actualDotString;
 
-	public ExpectedAttributesStringBuilderAsserter(String aInput) {
-		input = aInput;
+	public ExpectedAttributesStringBuilderAsserter(String aNonAttributePart, String anExpectedAttributeListString, String anActualDotString) {
+		nonAttributePart = aNonAttributePart;
+		expectedAttributeListString = anExpectedAttributeListString;
+		actualDotString = anActualDotString;
 	}
 
-	public String toQuotedAttributeString() {
-		if (input.length() == 0)
-			return input;
-		StringBuilder builder = new StringBuilder(" [");
-		String[] strings = input.split(",");
-		String comma = "";
-		for (String string : strings) {
-			builder.append(comma);
-			comma = ", ";
-			String[] split = string.split("=");
-			builder.append(split[0].trim());
-			builder.append('=');
-			builder.append('"');
-			builder.append(split[1].trim());
-			builder.append('"');
+	protected void assertDotString() {
+		if (!actualDotString.startsWith(nonAttributePart)) {
+			String message = "First part did not match correctly";
+			Assert.assertEquals(message, nonAttributePart + " [this part has been inserted by the test case]", actualDotString);
 		}
-		return builder.toString() + "]\n";
+		String rest = actualDotString.replaceFirst(nonAttributePart, "");
+		Assert.assertTrue(rest.endsWith("]\n"));
+		rest = rest.substring(0, rest.length() - 2); // drop ]\n
+		if (expectedAttributeListString.trim().length() == 0) {
+			Assert.assertEquals("No Attribute list was expected but " + rest + " was found", "", rest.trim());
+			return;
+		}
+		Assert.assertTrue("Attribute list must start with [", rest.startsWith(" ["));
+		rest = rest.substring(2); // Now only attributes left
+		assertAttributesEqual(expectedAttributeListString, rest);
 	}
 
+	private void assertAttributesEqual(String aAnExpectedAttributeListString, String anActualAttributeString) {
+		Map<String, String> expectedMap = getMapFromArray(aAnExpectedAttributeListString, "\"");
+		Map<String, String> actualMap = getMapFromArray(anActualAttributeString, "");
+		for (String expectedKey : expectedMap.keySet()) {
+			Assert.assertTrue("Expected Key " + expectedKey + " not found in actual string (" + anActualAttributeString + ")",
+					actualMap.containsKey(expectedKey));
+			String actualValue = actualMap.get(expectedKey);
+			String expectedValue = expectedMap.get(expectedKey);
+			Assert.assertEquals("Values do not match for key " + expectedKey + " ", expectedValue, actualValue);
+			actualMap.remove(expectedKey);
+		}
+		Assert.assertTrue("The actual string still contains the following keys " + actualMap.toString(), actualMap.isEmpty());
+	}
+
+	private Map<String, String> getMapFromArray(String aAnExpectedAttributeListString, String aDelimiter) {
+		String[] expectedPairs = aAnExpectedAttributeListString.split(",");
+		Map<String, String> map = new HashMap<String, String>();
+		for (String string : expectedPairs) {
+			String[] keyValue = string.split("=");
+			map.put(keyValue[0].trim(), aDelimiter + keyValue[1] + aDelimiter);
+		}
+		return map;
+	}
 
 }
