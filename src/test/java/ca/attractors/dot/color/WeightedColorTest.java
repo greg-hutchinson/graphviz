@@ -6,10 +6,9 @@ public class WeightedColorTest extends TestCase {
 
 	public void testGetValue() {
 		WeightedColor color = new WeightedColor(X11NamedColor.ALICEBLUE);
-		System.out.println(color.getValue());
+		assertEquals("\"aliceblue\"", color.getValue());
 		color = new WeightedColor(X11NamedColor.ALICEBLUE, (float) 0.21);
-		System.out.println(color.getValue());
-
+		assertEquals("\"aliceblue;0.21\"", color.getValue());
 	}
 
 }
