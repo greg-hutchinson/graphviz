@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum RankType implements IDotAttributeValue {
 	SAME("same"),
 	MIN("min"),
@@ -16,4 +18,9 @@ public enum RankType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

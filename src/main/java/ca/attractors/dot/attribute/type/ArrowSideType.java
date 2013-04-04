@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum ArrowSideType implements IDotAttributeValue {
 	LEFT("l"),
 	RIGHT("r");
@@ -13,4 +15,9 @@ public enum ArrowSideType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

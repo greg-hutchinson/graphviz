@@ -1,9 +1,12 @@
 package ca.attractors.dot.color;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import ca.attractors.util.Strings;
+
 public class ColorList implements IColorList {
-	private List<IColor> colors;
+	private List<IColor> colors = new ArrayList<IColor>();
 
 	public String getValue() {
 		String colon = "";
@@ -13,6 +16,14 @@ public class ColorList implements IColorList {
 			colon = ":";
 		}
 		return result;
+	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
+	public void addColor(IColor aColor) {
+		colors.add(aColor);
 	}
 
 }

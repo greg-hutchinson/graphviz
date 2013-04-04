@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
-public interface IDotAttributeValue {
+import ca.attractors.dot.IDotElement;
+
+public interface IDotAttributeValue extends IDotElement {
 	String getValue();
 }

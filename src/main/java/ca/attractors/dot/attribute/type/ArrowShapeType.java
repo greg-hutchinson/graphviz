@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum ArrowShapeType implements IDotAttributeValue {
 	BOX("box"),
 	CROW("crow"),
@@ -21,4 +23,9 @@ public enum ArrowShapeType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public class StringDotAttributeValue implements IDotAttributeValue {
 	private String value;
 
@@ -9,6 +11,10 @@ public class StringDotAttributeValue implements IDotAttributeValue {
 
 	public String getValue() {
 		return value;
+	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
 	}
 
 }

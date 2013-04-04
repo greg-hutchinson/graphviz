@@ -2,7 +2,9 @@ package ca.attractors.dot.color;
 
 import java.awt.Color;
 
-public enum X11NamedColor implements IBasicColor {
+import ca.attractors.util.Strings;
+
+public enum X11NamedColor implements ITerminalColor {
 	ALICEBLUE(240, 248, 255),
 	ANTIQUEWHITE(250, 235, 215),
 	ANTIQUEWHITE1(255, 239, 219),
@@ -677,5 +679,10 @@ public enum X11NamedColor implements IBasicColor {
 	public String getValue() {
 		return name().toLowerCase();
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 
 }

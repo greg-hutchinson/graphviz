@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum SmoothType implements IDotAttributeValue {
 	NONE("none"),
 	AVG_DIST("avg_dist"),
@@ -18,4 +20,9 @@ public enum SmoothType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

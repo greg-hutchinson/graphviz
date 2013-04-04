@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public final class RectType implements IDotAttributeValue {
 	
 	private final double llx;
@@ -16,6 +18,10 @@ public final class RectType implements IDotAttributeValue {
 	
 	public String getValue() {
 		return String.valueOf(llx) + "," + String.valueOf(lly) + "," + String.valueOf(urx) + "," + String.valueOf(ury);
+	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
 	}
 
 }

@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public final class PointType implements IDotAttributeValue {
 	
 	private final double x;
@@ -31,6 +33,10 @@ public final class PointType implements IDotAttributeValue {
 	
 	public String getValue() {
 		return String.valueOf(x) + "," + String.valueOf(y) + (z != null ? "," + z : "") + (nodePositionShouldNotChange ? "!" : "");
+	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
 	}
 
 }

@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 //TODO,Arrows are actually more complex than just an enum--see other Arrow*Type classes,RF
 public enum ArrowType implements IDotAttributeValue {
 	BOX("box"),
@@ -31,4 +33,9 @@ public enum ArrowType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }
