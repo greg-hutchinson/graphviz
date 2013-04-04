@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum ShapeType implements IDotAttributeValue {
 	BOX("box"),
 	POLYGON("polygon"),
@@ -66,4 +68,9 @@ public enum ShapeType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

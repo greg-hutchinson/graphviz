@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum DirType  implements IDotAttributeValue {
 	FORWARD("forward"),
 	BACK("back"),
@@ -15,4 +17,9 @@ public enum DirType  implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

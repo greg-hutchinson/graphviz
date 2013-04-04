@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public enum RankDirType implements IDotAttributeValue {
 	TB("TB"),
 	LR("LR"),
@@ -15,4 +17,9 @@ public enum RankDirType implements IDotAttributeValue {
 	public String getValue() {
 		return value;
 	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
+	}
+
 }

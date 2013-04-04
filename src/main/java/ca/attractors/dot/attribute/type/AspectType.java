@@ -1,5 +1,7 @@
 package ca.attractors.dot.attribute.type;
 
+import ca.attractors.util.Strings;
+
 public final class AspectType implements IDotAttributeValue {
 	
 	private final double aspectRatio;
@@ -17,6 +19,10 @@ public final class AspectType implements IDotAttributeValue {
 	
 	public String getValue() {
 		return String.valueOf(aspectRatio) + (maximumPassCount != null ? "," + maximumPassCount : "");
+	}
+
+	public String toDotString() {
+		return Strings.quoted(getValue());
 	}
 
 }

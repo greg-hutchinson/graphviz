@@ -8,7 +8,6 @@ import java.util.Map.Entry;
 
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
-import ca.attractors.util.Strings;
 
 /** 
  * This class represents the abstraction of all the DOT Language defined objects. (See all concrete subclasses for the complete list) 
@@ -136,7 +135,7 @@ public abstract class AbstractDotLanguageObject {
 			for (Entry<String, IDotAttributeValue> entry : attributes.entrySet()) {
 				builder.append(comma + entry.getKey());
 				builder.append("=");
-				builder.append(Strings.quoted(entry.getValue().getValue()));
+				builder.append(entry.getValue().toDotString());
 				comma = ", ";
 			}
 			return builder.toString() + "]";
