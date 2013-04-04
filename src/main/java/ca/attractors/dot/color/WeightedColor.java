@@ -25,10 +25,9 @@ public class WeightedColor implements ITerminalColor {
 	}
 
 	public String getValue() {
-		String string = color.getValue();
-		if (weight != null)
-			string += ";" + weight.toString();
-		return string;
+		if (weight == null)
+			return color.getValue();
+		return color.getValue() + ";" + weight.toString();
 	}
 
 	public String toDotString() {
