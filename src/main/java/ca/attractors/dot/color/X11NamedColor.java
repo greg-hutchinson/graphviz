@@ -2,7 +2,7 @@ package ca.attractors.dot.color;
 
 import java.awt.Color;
 
-public enum X11NamedColor implements IDotColor {
+public enum X11NamedColor implements IBasicColor {
 	ALICEBLUE(240, 248, 255),
 	ANTIQUEWHITE(250, 235, 215),
 	ANTIQUEWHITE1(255, 239, 219),
