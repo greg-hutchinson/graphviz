@@ -11,9 +11,7 @@ public enum GraphType {
 
 	@Override
 	public String toString() {
-		if (this == DIGRAPH)
-			return "digraph";
-		return "graph";
+		return name().toLowerCase();
 	}
 
 }

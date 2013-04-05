@@ -13,4 +13,11 @@ public class WeightedColorTest extends TestCase {
 		assertEquals("\"aliceblue;0.21\"", color.toDotString());
 	}
 
+	public void testConstruction() {
+		try {
+			new WeightedColor(X11NamedColor.ALICEBLUE, null);
+			fail("Expected NPE did not occur");
+		} catch (NullPointerException e) {
+		}
+	}
 }

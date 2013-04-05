@@ -12,4 +12,15 @@ public class NodeTest extends DotTestCase {
 		assertDotStringOnlyContains(Strings.quoted("abc"), "label=someValue, fillcolor=blue", node.toDotString());
 	}
 
+	public void testEqualsHashcode() {
+		Node node = new Node("abc");
+		Node node2 = new Node("abc");
+		Node node3 = new Node("different");
+		assertEquals(node, node2);
+		assertNotSame(node, node2);
+		assertFalse(node.equals(node3));
+		assertFalse(node.equals(new Object()));
+		assertEquals(node.hashCode(), node2.hashCode());
+	}
+
 }

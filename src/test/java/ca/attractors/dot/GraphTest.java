@@ -30,7 +30,7 @@ public class GraphTest extends TestCase {
 		assertEquals(getExpectedComplexString(), actualString);
 	}
 
-	public void testCoverage() {
+	public void testEqualsHashcode() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		Graph graph2 = new Graph("name", GraphType.DIGRAPH);
 		Graph graph3 = new Graph("different", GraphType.DIGRAPH);
@@ -38,9 +38,7 @@ public class GraphTest extends TestCase {
 		assertNotSame(graph, graph2);
 		assertFalse(graph.equals(graph3));
 		assertFalse(graph.equals(new Object()));
-
 		assertEquals(graph.hashCode(), graph2.hashCode());
-
 	}
 
 	public void testGetDefinition() {
