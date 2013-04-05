@@ -107,13 +107,9 @@ public class Graph extends AbstractGraphAttributes {
 		return (DefaultNodeAttributes) addGraphElement(new DefaultNodeAttributes());
 	}
 
-	/* 
-	 * I believe this is not necessary. The instance of the graph has the settings that are treated as the
-	 * defaults for the graph. If it has not be uncommented by 2014. Delete it.
-	 */
-//	public DefaultGraphAttributes newDefaultGraphAttributes() {
-//		return (DefaultGraphAttributes) addGraphElement(new DefaultGraphAttributes());
-//	}
+	public DefaultGraphAttributes newDefaultGraphAttributes() {
+		return (DefaultGraphAttributes) addGraphElement(new DefaultGraphAttributes());
+	}
 
 	@Override
 	public boolean equals(Object aObj) {
