@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import junit.framework.TestCase;
+import ca.attractors.dot.color.X11NamedColor;
 
 public class GraphTest extends TestCase {
 
@@ -16,20 +17,62 @@ public class GraphTest extends TestCase {
 		graph.newNode("node1");
 		graph.setBackgroundColor("red");
 		graph.newEdge("a", "b");
-		DefaultEdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+		graph.newEdge("a", "c");
+		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
 		edgeAttributes.setColor("blue");
+		DefaultNodeAttributes nodeAttributes = graph.newDefaultNodeAttributes();
+		nodeAttributes.setFillColor(X11NamedColor.BLUE);
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		String actualString = graph.toDotString();
 		assertEquals(getExpectedComplexString(), actualString);
 	}
 
+	public void testCoverage() {
+		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		Graph graph2 = new Graph("name", GraphType.DIGRAPH);
+		Graph graph3 = new Graph("different", GraphType.DIGRAPH);
+		assertEquals(graph, graph2);
+		assertNotSame(graph, graph2);
+		assertFalse(graph.equals(graph3));
+		assertFalse(graph.equals(new Object()));
+
+		assertEquals(graph.hashCode(), graph2.hashCode());
+
+	}
+
+	public void testGetDefinition() {
+		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		assertEquals("", graph.getDefinition());
+		graph.setFontname("abc");
+		assertFalse("".equals(graph.getDefinition()));
+
+	}
+
+	public void testConstructors() {
+		Graph graph = new Graph();
+		assertEquals(GraphType.DIGRAPH, graph.getType());
+
+		try {
+			new Graph(null, GraphType.DIGRAPH);
+			fail("Expected exception did not occur");
+		} catch (NullPointerException e) {
+		}
+		try {
+			new Graph("name", null);
+			fail("Expected exception did not occur");
+		} catch (NullPointerException e) {
+		}
+	}
+
 	public static void main(String[] args) {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
-		graph.newNode("node1");
+		Node newNode = graph.newNode("node1");
+		newNode.setFillColor(X11NamedColor.ANTIQUEWHITE);
+		newNode.setStyle("filled");
 		graph.setBackgroundColor("red");
 		graph.newEdge("a", "b");
-		DefaultEdgeAttributes edgeAttributes = graph.newEdgeAttributes();
+		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
 		edgeAttributes.setColor("blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
@@ -43,10 +86,13 @@ public class GraphTest extends TestCase {
 		builder.append("graph [bgcolor=\"red\"]\n");
 		builder.append("\"node1\"\n");
 		builder.append("\"a\" -> \"b\"\n");
+		builder.append("\"a\" -> \"c\"\n");
 		builder.append("Edge [color=\"blue\"]\n");
+		builder.append("Node [fillcolor=\"blue\"]\n");
 		builder.append("subgraph \"sub1\" {\n");
 		builder.append("\"d\"\n");
 		builder.append("}\n}\n");
 		return builder.toString();
 	}
+
 }

@@ -25,4 +25,10 @@ public class Edge extends AbstractEdgeAttributes {
 	private String getEdgeString() {
 		return graphType.getEdgeString();
 	}
+
+	@Override
+	protected boolean isRedundantDefinition() {
+		return false; //Edges are never redundant
+	}
+
 }
