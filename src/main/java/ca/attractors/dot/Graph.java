@@ -80,9 +80,9 @@ public class Graph extends AbstractGraphAttributes {
 	private Node getNodeNamed(String aString) {
 		if (nodes.containsKey(aString))
 			return nodes.get(aString);
-		//FIXME, GH - Not sure about this yet. Changing my mind.		
-		//return newNode(aString);
-		return new Node(aString);
+		Node newNode = newNode(aString);
+		newNode.markCreatedImplicitely();
+		return newNode;
 	}
 
 	public Node newNode(String aString) {
@@ -99,17 +99,21 @@ public class Graph extends AbstractGraphAttributes {
 	}
 
 
-	public DefaultEdgeAttributes newEdgeAttributes() {
+	public DefaultEdgeAttributes newDefaultEdgeAttributes() {
 		return (DefaultEdgeAttributes) addGraphElement(new DefaultEdgeAttributes());
 	}
 
-	public DefaultNodeAttributes newNodeAttributes() {
+	public DefaultNodeAttributes newDefaultNodeAttributes() {
 		return (DefaultNodeAttributes) addGraphElement(new DefaultNodeAttributes());
 	}
 
-	public DefaultGraphAttributes newGraphAttributes() {
-		return (DefaultGraphAttributes) addGraphElement(new DefaultGraphAttributes());
-	}
+	/* 
+	 * I believe this is not necessary. The instance of the graph has the settings that are treated as the
+	 * defaults for the graph. If it has not be uncommented by 2014. Delete it.
+	 */
+//	public DefaultGraphAttributes newDefaultGraphAttributes() {
+//		return (DefaultGraphAttributes) addGraphElement(new DefaultGraphAttributes());
+//	}
 
 	@Override
 	public boolean equals(Object aObj) {
@@ -121,6 +125,10 @@ public class Graph extends AbstractGraphAttributes {
 
 	public int hashCode() {
 		return name.hashCode();
+	}
+
+	public GraphType getType() {
+		return type;
 	}
 
 }

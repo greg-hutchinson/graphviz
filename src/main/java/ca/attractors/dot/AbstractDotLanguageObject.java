@@ -43,12 +43,22 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	public final void basicToDotStringOn(PrintStream aPrintStream) {
-		String sequence = getDefinition();
-		String string = attributesToDotString();
-		aPrintStream.append(sequence);
-		aPrintStream.append(string);
-		if (string.length() + sequence.length() > 0)
+		if (isRedundantDefinition())
+			return;
+		String definition = getDefinition();
+		String attributeString = attributesToDotString();
+		aPrintStream.append(definition);
+		aPrintStream.append(attributeString);
+		if (attributeString.length() + definition.length() > 0)
 			aPrintStream.append("\n");
+	}
+
+	/**
+	 * This method is to be overridden if the object should dump itself as a string, even if it has no attributes defined.
+	 * (Edges for example).
+	 */
+	protected boolean isRedundantDefinition() {
+		return isAttributesEmpty();
 	}
 
 	protected abstract String getDefinition();

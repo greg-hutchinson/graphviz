@@ -5,6 +5,7 @@ import ca.attractors.util.Strings;
 public class Node extends AbstractNodeAttributes {
 
 	private String name;
+	private boolean createdImplicitely = false; //Was the Node was explicitly created or created as a side effect of a -> b (defines 2 nodes implicitely)
 
 	protected Node(String aName) {
 		name = aName;
@@ -30,6 +31,17 @@ public class Node extends AbstractNodeAttributes {
 
 	public int hashCode() {
 		return name.hashCode();
+	}
+
+	@Override
+	protected boolean isRedundantDefinition() {
+		if (!super.isRedundantDefinition())
+			return false;
+		return createdImplicitely;
+	}
+
+	protected void markCreatedImplicitely() {
+		createdImplicitely = true;
 	}
 
 }
