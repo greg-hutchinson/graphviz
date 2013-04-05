@@ -35,6 +35,8 @@ public class ExpectedAttributesStringBuilderAsserter {
 			Assert.assertEquals(message, nonAttributePart + " [this part has been inserted by the test case]", actualDotString);
 		}
 		String rest = actualDotString.replaceFirst(nonAttributePart, "");
+		if (rest.trim().equals(expectedAttributeListString.trim()))
+			return;
 		Assert.assertTrue(rest.endsWith("]\n"));
 		rest = rest.substring(0, rest.length() - 2); // drop ]\n
 		if (expectedAttributeListString.trim().length() == 0) {

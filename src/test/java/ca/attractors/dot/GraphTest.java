@@ -24,6 +24,8 @@ public class GraphTest extends TestCase {
 		nodeAttributes.setFillColor(X11NamedColor.BLUE);
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
+		DefaultGraphAttributes defaultGraphAttributes = graph.newDefaultGraphAttributes();
+		defaultGraphAttributes.setBackgroundColor("blue");
 		String actualString = graph.toDotString();
 		assertEquals(getExpectedComplexString(), actualString);
 	}
@@ -65,6 +67,23 @@ public class GraphTest extends TestCase {
 		}
 	}
 
+	private String getExpectedComplexString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("digraph \"name\" {\n");
+		builder.append("graph [bgcolor=\"red\"]\n");
+		builder.append("\"node1\"\n");
+		builder.append("\"a\" -> \"b\"\n");
+		builder.append("\"a\" -> \"c\"\n");
+		builder.append("Edge [color=\"blue\"]\n");
+		builder.append("Node [fillcolor=\"blue\"]\n");
+		builder.append("subgraph \"sub1\" {\n");
+		builder.append("\"d\"\n");
+		builder.append("}\n");
+		builder.append("graph [bgcolor=\"blue\"]\n");
+		builder.append("}\n");
+		return builder.toString();
+	}
+
 	public static void main(String[] args) {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		Node newNode = graph.newNode("node1");
@@ -78,21 +97,6 @@ public class GraphTest extends TestCase {
 		subgraph.newNode("d");
 		String actualString = graph.toDotString();
 		System.out.println(actualString);
-	}
-
-	private String getExpectedComplexString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("digraph \"name\" {\n");
-		builder.append("graph [bgcolor=\"red\"]\n");
-		builder.append("\"node1\"\n");
-		builder.append("\"a\" -> \"b\"\n");
-		builder.append("\"a\" -> \"c\"\n");
-		builder.append("Edge [color=\"blue\"]\n");
-		builder.append("Node [fillcolor=\"blue\"]\n");
-		builder.append("subgraph \"sub1\" {\n");
-		builder.append("\"d\"\n");
-		builder.append("}\n}\n");
-		return builder.toString();
 	}
 
 }
