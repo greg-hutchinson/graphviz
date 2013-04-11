@@ -101,8 +101,8 @@ public class GraphTest extends TestCase {
 		HtmlLabel label = new HtmlLabel();
 		HtmlTable table = label.newTable();
 		HtmlTableRow row = table.newRow();
-		row.newCell().setText("Hello");
-		row.newCell().setText("World");
+		row.newCell().setContent("Hello");
+		row.newCell().setContent("World");
 		node.setHtmlLabel(label);
 		
 		String actualString = graph.toDotString();
