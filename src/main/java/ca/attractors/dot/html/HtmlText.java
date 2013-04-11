@@ -16,17 +16,17 @@ public class HtmlText extends HtmlBase {
 	}
 
 	public HtmlText setColor(IColor aColor) {
-		this.color = aColor;
+		color = aColor;
 		return this;
 	}
 
 	public HtmlText setPointSize(String aPointSize) {
-		this.pointSize = aPointSize;
+		pointSize = aPointSize;
 		return this;
 	}
 
 	public HtmlText setFace(String aFace) {
-		this.face = aFace;
+		face = aFace;
 		return this;
 	}
 	
@@ -50,9 +50,7 @@ public class HtmlText extends HtmlBase {
 			aPrintStream.append(">");
 		}
 		aPrintStream.append(text);
-		
 		if (renderFont())
 			aPrintStream.append("</font>");
 	}
-
 }

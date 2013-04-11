@@ -15,38 +15,38 @@ public class HtmlTable extends HtmlTableBase {
 		return this;
 	}
 
-	public HtmlTable setBgcolor(IColor color) {
-		this.bgcolor = color;
+	public HtmlTable setBgcolor(IColor aColor) {
+		bgcolor = aColor;
 		return this;
 	}
 
-	public HtmlTable setBorder(int border) {
-		this.border = border;
+	public HtmlTable setBorder(int aBorder) {
+		border = aBorder;
 		return this;
 	}
 
-	public HtmlTable setCellborder(int cellborder) {
-		this.cellborder = cellborder;
+	public HtmlTable setCellborder(int aCellBorder) {
+		cellborder = aCellBorder;
 		return this;
 	}
 
-	public HtmlTable setCellpadding(int cellpadding) {
-		this.cellpadding = cellpadding;
+	public HtmlTable setCellpadding(int aCellPadding) {
+		cellpadding = aCellPadding;
 		return this;
 	}
 
-	public HtmlTable setCellspacing(int cellspacing) {
-		this.cellspacing = cellspacing;
+	public HtmlTable setCellspacing(int aCellSpacing) {
+		cellspacing = aCellSpacing;
 		return this;
 	}
 
-	public HtmlTable setColor(IColor color) {
-		this.color = color;
+	public HtmlTable setColor(IColor aColor) {
+		color = aColor;
 		return this;
 	}
 
-	public HtmlTable setFixedsize(boolean fixedsize) {
-		this.fixedsize = fixedsize;
+	public HtmlTable setFixedsize(boolean aFixedSize) {
+		fixedsize = aFixedSize;
 		return this;
 	}
 
