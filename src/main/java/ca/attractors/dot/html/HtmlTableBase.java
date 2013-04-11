@@ -6,7 +6,7 @@ import ca.attractors.dot.color.IColor;
 
 abstract class HtmlTableBase extends HtmlBase {
 
-	String align;
+	Alignment align;
 	IColor bgcolor;
 	Integer border;
 	Integer cellborder;
