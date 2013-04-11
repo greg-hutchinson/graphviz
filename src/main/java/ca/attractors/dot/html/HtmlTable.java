@@ -10,7 +10,7 @@ public class HtmlTable extends HtmlTableBase {
 
 	private List<HtmlTableRow> rows = new ArrayList<HtmlTableRow>();
 
-	public HtmlTable setAlign(String anAlign) {
+	public HtmlTable setAlign(Alignment anAlign) {
 		this.align = anAlign;
 		return this;
 	}

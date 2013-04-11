@@ -6,7 +6,7 @@ import ca.attractors.dot.color.IColor;
 
 public class HtmlTableCell extends HtmlTableBase {
 	
-	private String valign;
+	private VerticalAlignment valign;
 	private String href;
 	private HtmlText content;
 	
@@ -15,7 +15,7 @@ public class HtmlTableCell extends HtmlTableBase {
 		return content;
 	}
 
-	public HtmlTableCell setValign(String aValign) {
+	public HtmlTableCell setValign(VerticalAlignment aValign) {
 		this.valign = aValign;
 		return this;
 	}
@@ -25,7 +25,7 @@ public class HtmlTableCell extends HtmlTableBase {
 		return this;
 	}
 
-	public HtmlTableCell setAlign(String anAlign) {
+	public HtmlTableCell setAlign(Alignment anAlign) {
 		this.align = anAlign;
 		return this;
 	}
