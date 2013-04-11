@@ -4,26 +4,12 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HtmlTable extends HtmlBase {
+public class HtmlTable extends HtmlTableBase {
 
 	private List<HtmlTableRow> rows = new ArrayList<HtmlTableRow>();
-	
-	private String align;
-	private String bgcolor;
-	private Integer border;
-	private Integer cellborder;
-	private Integer cellpadding;
-	private Integer cellspacing;
-	private String color;
-	private Boolean fixedsize;
-	
-	public HtmlTable setRows(List<HtmlTableRow> rows) {
-		this.rows = rows;
-		return this;
-	}
 
-	public HtmlTable setAlign(String align) {
-		this.align = align;
+	public HtmlTable setAlign(String anAlign) {
+		this.align = anAlign;
 		return this;
 	}
 
@@ -71,14 +57,7 @@ public class HtmlTable extends HtmlBase {
 	@Override
 	void basicToDotStringOn(PrintStream aPrintStream) {
 		aPrintStream.append("<table ");
-		appendIfNotNull("ALIGN", align, aPrintStream);
-		appendIfNotNull("BGCOLOR", bgcolor, aPrintStream);
-		appendIfNotNull("BORDER", border, aPrintStream);
-		appendIfNotNull("CELLBORDER", cellborder, aPrintStream);
-		appendIfNotNull("CELLPADDING", cellpadding, aPrintStream);
-		appendIfNotNull("CELLSPACING", cellspacing, aPrintStream);
-		appendIfNotNull("COLOR", color, aPrintStream);
-		appendIfNotNull("FIXEDSIZE", fixedsize, aPrintStream);
+		appendCommonAttributes(aPrintStream);
 		aPrintStream.append(">");
 		for (HtmlTableRow row : rows) {
 			row.toDotStringOn(aPrintStream);
