@@ -21,15 +21,15 @@ public class HtmlLabelTest extends TestCase {
 	public void testTableAttributes(){
 		HtmlLabel htmlLabel = new HtmlLabel();
 		HtmlTable table = htmlLabel.newTable();
-		table.setAlign("CENTER").setBgcolor("white").setBorder(1).setCellborder(0).setCellpadding(1).setCellspacing(2).setColor("black").setFixedsize(false);
-		assertEquals("<<table ALIGN=\"CENTER\" BGCOLOR=\"WHITE\" BORDER=\"1\" CELLBORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"2\" COLOR=\"BLACK\" FIXEDSIZE=\"FALSE\" ></table>>", htmlLabel.toDotString());
+		table.setAlign("center").setBgcolor("white").setBorder(1).setCellborder(0).setCellpadding(1).setCellspacing(2).setColor("black").setFixedsize(false);
+		assertEquals("<<table ALIGN=\"center\" BGCOLOR=\"white\" BORDER=\"1\" CELLBORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"2\" COLOR=\"black\" FIXEDSIZE=\"false\" ></table>>", htmlLabel.toDotString());
 	}
 	
 	public void testCellAttributes(){
 		HtmlLabel htmlLabel = new HtmlLabel();
 		HtmlTable table = htmlLabel.newTable();
 		HtmlTableRow row = table.newRow();
-		row.newCell().setAlign("CENTER").setHref("asdf/asdf").setContent("Text").setFace("SANS SERIF");
-		assertEquals("<<table ><tr><td ALIGN=\"CENTER\" HREF=\"ASDF/ASDF\" ><font FACE=\"SANS SERIF\" >Text</font></td></tr></table>>", htmlLabel.toDotString());
+		row.newCell().setAlign("center").setHref("asdf/asdf").setContent("Text").setFace("SANS SERIF");
+		assertEquals("<<table ><tr><td ALIGN=\"center\" HREF=\"asdf/asdf\" ><font FACE=\"SANS SERIF\" >Text</font></td></tr></table>>", htmlLabel.toDotString());
 	}
 }
