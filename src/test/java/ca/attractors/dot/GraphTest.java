@@ -2,6 +2,9 @@ package ca.attractors.dot;
 
 import junit.framework.TestCase;
 import ca.attractors.dot.color.X11NamedColor;
+import ca.attractors.dot.html.HtmlLabel;
+import ca.attractors.dot.html.HtmlTable;
+import ca.attractors.dot.html.HtmlTableRow;
 
 public class GraphTest extends TestCase {
 
@@ -93,7 +96,17 @@ public class GraphTest extends TestCase {
 		edgeAttributes.setColor("blue");
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
+		
+		Node node = graph.newNode("html node");
+		HtmlLabel label = new HtmlLabel();
+		HtmlTable table = label.newTable("hi");
+		HtmlTableRow row = table.newRow();
+		row.newCell().setText("Hello");
+		row.newCell().setText("World");
+		node.setHtmlLabel(label);
+		
 		String actualString = graph.toDotString();
+		
 		System.out.println(actualString);
 	}
 

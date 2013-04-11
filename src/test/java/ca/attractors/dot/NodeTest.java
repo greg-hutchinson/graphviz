@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import ca.attractors.dot.color.X11NamedColor;
+import ca.attractors.dot.html.HtmlLabel;
 import ca.attractors.util.Strings;
 
 public class NodeTest extends DotTestCase {
@@ -10,6 +11,14 @@ public class NodeTest extends DotTestCase {
 		node.setFillColor(X11NamedColor.BLUE);
 		node.setLabel("someValue");
 		assertDotStringOnlyContains(Strings.quoted("abc"), "label=someValue, fillcolor=blue", node.toDotString());
+	}
+	
+	public void testHtmlLabelToDotString(){
+		Node node = new Node("abc");
+		HtmlLabel label = new HtmlLabel();
+		label.newTable("Table");
+		node.setHtmlLabel(label);
+		assertEquals("\"abc\" [label=<<table></table>>]", node.toDotString().trim());
 	}
 
 	public void testEqualsHashcode() {
