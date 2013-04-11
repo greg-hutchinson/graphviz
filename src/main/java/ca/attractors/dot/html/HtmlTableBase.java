@@ -2,15 +2,17 @@ package ca.attractors.dot.html;
 
 import java.io.PrintStream;
 
+import ca.attractors.dot.color.IColor;
+
 abstract class HtmlTableBase extends HtmlBase {
 
 	String align;
-	String bgcolor;
+	IColor bgcolor;
 	Integer border;
 	Integer cellborder;
 	Integer cellpadding;
 	Integer cellspacing;
-	String color;
+	IColor color;
 	Boolean fixedsize;
 	
 	void appendCommonAttributes(PrintStream aPrintStream) {

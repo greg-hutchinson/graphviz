@@ -102,7 +102,7 @@ public class GraphTest extends TestCase {
 		HtmlTable table = label.newTable();
 		HtmlTableRow row = table.newRow();
 		row.newCell().setContent("Hello");
-		row.newCell().setContent("World");
+		row.newCell().setContent("World").setColor(X11NamedColor.WHEAT3);
 		node.setHtmlLabel(label);
 		
 		String actualString = graph.toDotString();
