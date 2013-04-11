@@ -99,7 +99,7 @@ public class GraphTest extends TestCase {
 		
 		Node node = graph.newNode("html node");
 		HtmlLabel label = new HtmlLabel();
-		HtmlTable table = label.newTable("hi");
+		HtmlTable table = label.newTable();
 		HtmlTableRow row = table.newRow();
 		row.newCell().setText("Hello");
 		row.newCell().setText("World");

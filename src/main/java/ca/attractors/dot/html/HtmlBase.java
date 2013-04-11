@@ -25,4 +25,13 @@ abstract class HtmlBase implements IDotAttributeValue {
 		return toString();
 	}
 
+	void appendIfNotNull(String name, Object anAttributeValue, PrintStream aPrintStream) {
+		if (anAttributeValue != null) {
+			aPrintStream.append(name);
+			aPrintStream.append("=\"");
+			aPrintStream.append(anAttributeValue.toString().toUpperCase());
+			aPrintStream.append("\" ");
+		}
+	}
+
 }

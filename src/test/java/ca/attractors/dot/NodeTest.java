@@ -16,9 +16,9 @@ public class NodeTest extends DotTestCase {
 	public void testHtmlLabelToDotString(){
 		Node node = new Node("abc");
 		HtmlLabel label = new HtmlLabel();
-		label.newTable("Table");
+		label.newTable();
 		node.setHtmlLabel(label);
-		assertEquals("\"abc\" [label=<<table></table>>]", node.toDotString().trim());
+		assertEquals("\"abc\" [label=<<table ></table>>]", node.toDotString().trim());
 	}
 
 	public void testEqualsHashcode() {
