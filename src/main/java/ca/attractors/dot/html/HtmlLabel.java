@@ -8,8 +8,8 @@ public class HtmlLabel extends HtmlBase {
 	
 	private List<HtmlTable> tables = new ArrayList<HtmlTable>();
 	
-	public HtmlTable newTable(String aName) {
-		HtmlTable table = new HtmlTable(aName);
+	public HtmlTable newTable() {
+		HtmlTable table = new HtmlTable();
 		tables.add(table);
 		return table;
 	}
