@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import ca.attractors.dot.color.IColor;
+import ca.attractors.dot.html.HtmlLabel;
 
 /**
  * @see AbstractEdgeAttributes for the generic documentation for these types of classes 
@@ -18,6 +19,14 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 	}
 
 	public void setLabel(String aLabel) {
+		set(LABEL, aLabel);
+	}
+	
+	public HtmlLabel getHtmlLabel() {
+		return getHtmlLabel(LABEL);
+	}
+	
+	public void setHtmlLabel(HtmlLabel aLabel) {
 		set(LABEL, aLabel);
 	}
 

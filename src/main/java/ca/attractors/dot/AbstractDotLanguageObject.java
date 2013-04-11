@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
+import ca.attractors.dot.html.HtmlLabel;
 
 /** 
  * This class represents the abstraction of all the DOT Language defined objects. (See all concrete subclasses for the complete list) 
@@ -73,6 +74,10 @@ public abstract class AbstractDotLanguageObject {
 
 	protected final String getString(String aKey) {
 		return get(aKey).getValue();
+	}
+
+	protected final HtmlLabel getHtmlLabel(String aKey) {
+		return (HtmlLabel) get(aKey);
 	}
 
 	protected final IDotAttributeValue get(String aKey) {
