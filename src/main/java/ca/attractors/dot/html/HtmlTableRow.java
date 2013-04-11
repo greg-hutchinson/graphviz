@@ -22,7 +22,6 @@ public class HtmlTableRow extends HtmlBase {
 	public HtmlTable getTable() {
 		return owner;
 	}
-
 	
 	@Override
 	void basicToDotStringOn(PrintStream aPrintStream) {
