@@ -84,7 +84,7 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 	protected final void set(String aKey, IDotAttributeValue aValue) {
-		if (aValue == null || aValue.getValue().equals("")) {
+		if (aValue == null) {
 			attributes.remove(aKey);
 			return;
 		}
