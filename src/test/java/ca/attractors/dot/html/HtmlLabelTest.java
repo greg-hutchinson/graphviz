@@ -1,5 +1,6 @@
 package ca.attractors.dot.html;
 
+import ca.attractors.dot.color.X11NamedColor;
 import junit.framework.TestCase;
 
 public class HtmlLabelTest extends TestCase {
@@ -21,8 +22,8 @@ public class HtmlLabelTest extends TestCase {
 	public void testTableAttributes(){
 		HtmlLabel htmlLabel = new HtmlLabel();
 		HtmlTable table = htmlLabel.newTable();
-		table.setAlign("center").setBgcolor("white").setBorder(1).setCellborder(0).setCellpadding(1).setCellspacing(2).setColor("black").setFixedsize(false);
-		assertEquals("<<table ALIGN=\"center\" BGCOLOR=\"white\" BORDER=\"1\" CELLBORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"2\" COLOR=\"black\" FIXEDSIZE=\"false\" ></table>>", htmlLabel.toDotString());
+		table.setAlign("center").setBgcolor(X11NamedColor.WHITE).setBorder(1).setCellborder(0).setCellpadding(1).setCellspacing(2).setColor(X11NamedColor.BLACK).setFixedsize(false);
+		assertEquals("<<table ALIGN=\"center\" BGCOLOR=\"WHITE\" BORDER=\"1\" CELLBORDER=\"0\" CELLPADDING=\"1\" CELLSPACING=\"2\" COLOR=\"BLACK\" FIXEDSIZE=\"false\" ></table>>", htmlLabel.toDotString());
 	}
 	
 	public void testCellAttributes(){

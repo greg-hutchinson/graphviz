@@ -4,6 +4,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import ca.attractors.dot.color.IColor;
+
 public class HtmlTable extends HtmlTableBase {
 
 	private List<HtmlTableRow> rows = new ArrayList<HtmlTableRow>();
@@ -13,8 +15,8 @@ public class HtmlTable extends HtmlTableBase {
 		return this;
 	}
 
-	public HtmlTable setBgcolor(String bgcolor) {
-		this.bgcolor = bgcolor;
+	public HtmlTable setBgcolor(IColor color) {
+		this.bgcolor = color;
 		return this;
 	}
 
@@ -38,7 +40,7 @@ public class HtmlTable extends HtmlTableBase {
 		return this;
 	}
 
-	public HtmlTable setColor(String color) {
+	public HtmlTable setColor(IColor color) {
 		this.color = color;
 		return this;
 	}

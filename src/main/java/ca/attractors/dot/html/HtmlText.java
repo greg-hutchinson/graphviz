@@ -2,9 +2,11 @@ package ca.attractors.dot.html;
 
 import java.io.PrintStream;
 
+import ca.attractors.dot.color.IColor;
+
 public class HtmlText extends HtmlBase {
 	
-	private String color;
+	private IColor color;
 	private String pointSize;
 	private String face;
 	private String text;
@@ -13,7 +15,7 @@ public class HtmlText extends HtmlBase {
 		text = aText;
 	}
 
-	public HtmlText setColor(String aColor) {
+	public HtmlText setColor(IColor aColor) {
 		this.color = aColor;
 		return this;
 	}

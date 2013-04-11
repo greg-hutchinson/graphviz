@@ -2,6 +2,8 @@ package ca.attractors.dot.html;
 
 import java.io.PrintStream;
 
+import ca.attractors.dot.color.IColor;
+
 public class HtmlTableCell extends HtmlTableBase {
 	
 	private String valign;
@@ -28,7 +30,7 @@ public class HtmlTableCell extends HtmlTableBase {
 		return this;
 	}
 
-	public HtmlTableCell setBgcolor(String bgcolor) {
+	public HtmlTableCell setBgcolor(IColor bgcolor) {
 		this.bgcolor = bgcolor;
 		return this;
 	}
@@ -53,7 +55,7 @@ public class HtmlTableCell extends HtmlTableBase {
 		return this;
 	}
 
-	public HtmlTableCell setColor(String color) {
+	public HtmlTableCell setColor(IColor color) {
 		this.color = color;
 		return this;
 	}
