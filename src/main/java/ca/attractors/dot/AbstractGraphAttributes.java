@@ -7,6 +7,8 @@ package ca.attractors.dot;
 
 public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject {
 	private static final String BG_COLOR = "bgcolor";
+	private static final String SPLINES = "splines";
+	private static final String RANK_SEP = "ranksep";
 
 	public void setBackgroundColor(String aString) {
 		set(BG_COLOR, aString);
@@ -16,4 +18,19 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 		return getString(BG_COLOR);
 	}
 
+	public void setSplines(String aString) {
+		set(SPLINES, aString);
+	}
+
+	public String getSplines() {
+		return getString(SPLINES);
+	}
+
+	public void setRankSep(String aString) {
+		set(RANK_SEP, aString);
+	}
+
+	public String getRankSep() {
+		return getString(RANK_SEP);
+	}
 }
