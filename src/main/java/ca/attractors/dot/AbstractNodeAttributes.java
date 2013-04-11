@@ -11,8 +11,10 @@ import ca.attractors.dot.html.HtmlLabel;
 public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
+	private static final String SHAPE = "shape";
 	private static final String STYLE = "style";
-
+	private static final String WIDTH = "width";
+	private static final String HEIGHT = "height";
 
 	public String getLabel() {
 		return getString(LABEL);
@@ -38,12 +40,36 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 		set(FILLCOLOR, aFillColor);
 	}
 
+	public String getShape() {
+		return getString(SHAPE);
+	}
+
+	public void setShape(String aShape) {
+		set(SHAPE, aShape);
+	}
+
 	public String getStyle() {
 		return getString(STYLE);
 	}
 
 	public void setStyle(String aStyle) {
 		set(STYLE, aStyle);
+	}
+
+	public String getWidth() {
+		return getString(WIDTH);
+	}
+
+	public void setWidth(String aStyle) {
+		set(WIDTH, aStyle);
+	}
+
+	public String getHeight() {
+		return getString(HEIGHT);
+	}
+
+	public void setHeight(String aStyle) {
+		set(HEIGHT, aStyle);
 	}
 
 }

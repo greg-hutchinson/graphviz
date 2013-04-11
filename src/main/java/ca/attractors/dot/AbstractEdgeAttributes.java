@@ -9,6 +9,8 @@ import ca.attractors.dot.attribute.type.DirType;
 public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
+	private static final String HEADPORT = "headport";
+	private static final String TAILPORT = "tailport";
 	private static final String COLOR = "color";
 	private static final String STYLE = "style";
 	private static final String DIR = "dir";
@@ -51,5 +53,21 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 
 	public String getColor() {
 		return getString(COLOR);
+	}
+
+	public void setHeadPort(String aString) {
+		set(HEADPORT, aString);
+	}
+
+	public String getHeadPort() {
+		return getString(HEADPORT);
+	}
+
+	public void setTailPort(String aString) {
+		set(TAILPORT, aString);
+	}
+
+	public String getTailPort() {
+		return getString(TAILPORT);
 	}
 }
