@@ -2,6 +2,8 @@ package ca.attractors.dot.html;
 
 import java.io.PrintStream;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 import ca.attractors.dot.color.IColor;
 
 public class HtmlText extends HtmlBase {
@@ -49,7 +51,7 @@ public class HtmlText extends HtmlBase {
 			appendIfNotNull("FACE", face, aPrintStream);
 			aPrintStream.append(">");
 		}
-		aPrintStream.append(text);
+		aPrintStream.append(StringEscapeUtils.escapeHtml(text));
 		if (renderFont())
 			aPrintStream.append("</font>");
 	}
