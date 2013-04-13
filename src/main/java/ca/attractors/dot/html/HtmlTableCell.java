@@ -7,6 +7,7 @@ public class HtmlTableCell extends HtmlTableBase<HtmlTableCell> {
 	private VerticalAlignment valign;
 	private String href;
 	private HtmlText content;
+	private String tooltip;
 
 	
 	public HtmlText setContent(String aText) {
@@ -24,12 +25,18 @@ public class HtmlTableCell extends HtmlTableBase<HtmlTableCell> {
 		return this;
 	}
 
+	public HtmlTableCell setToolTip(String aToolTip) {
+		this.tooltip = aToolTip;
+		return this;
+	}
+
 	@Override
 	void basicToDotStringOn(PrintStream aPrintStream) {
 		aPrintStream.append("<td ");
 		appendCommonAttributes(aPrintStream);
 		appendIfNotNull("VALIGN", valign, aPrintStream);
 		appendIfNotNull("HREF", href, aPrintStream);
+		appendIfNotNull("TOOLTIP", tooltip, aPrintStream);
 		aPrintStream.append(">");
 		content.basicToDotStringOn(aPrintStream);
 		aPrintStream.append("</td>");
