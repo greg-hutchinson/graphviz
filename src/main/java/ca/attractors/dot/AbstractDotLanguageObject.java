@@ -6,9 +6,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import ca.attractors.dot.attribute.type.ColorSchemeType;
 import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
+import ca.attractors.dot.color.IColor;
 import ca.attractors.dot.html.HtmlLabel;
 
 /** 
@@ -95,8 +97,27 @@ public abstract class AbstractDotLanguageObject {
 			return;
 		}
 		attributes.put(aKey, aValue);
+		setDerivitives(aKey, aValue);
+	}
+	
+	private void setDerivitives(String aKey, IDotAttributeValue aValue) {
+		if (aValue instanceof IColor) {
+			setColorSchemeFromColor((IColor) aValue);
+		}
 	}
 
+	private void setColorSchemeFromColor(IColor aColor) {
+		ColorSchemeType scheme = aColor.getColorScheme();
+		switch (scheme) {
+		case X11:
+			// suppress the default
+			setColorScheme(null);
+			break;
+		default:
+			setColorScheme(scheme);
+			break;
+		}
+	}
 
 	public FontType getFontface() {
 		return (FontType) get(FONTFACE);
@@ -122,11 +143,11 @@ public abstract class AbstractDotLanguageObject {
 		set(URL, aUrl);
 	}
 
-	public String getColorScheme() {
-		return getString(COLOR_SCHEME);
+	public ColorSchemeType getColorScheme() {
+		return (ColorSchemeType) get(COLOR_SCHEME);
 	}
 
-	public void setColorScheme(String aColorScheme) {
+	protected void setColorScheme(ColorSchemeType aColorScheme) {
 		set(COLOR_SCHEME, aColorScheme);
 	}
 

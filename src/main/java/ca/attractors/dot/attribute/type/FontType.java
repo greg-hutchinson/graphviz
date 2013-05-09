@@ -25,8 +25,7 @@ public enum FontType implements IDotAttributeValue {
 	Script("Script"),
 	Swiss("Swiss"),
 	TimesNewRoman("Times New Roman"),
-	Verdana("Verdana"),
-	NONE("none");
+	Verdana("Verdana");
 	
 	private final String value;
 	
