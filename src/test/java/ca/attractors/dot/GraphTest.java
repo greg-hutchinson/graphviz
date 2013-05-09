@@ -3,7 +3,6 @@ package ca.attractors.dot;
 import junit.framework.TestCase;
 import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.attribute.type.NodeStyleType;
-import ca.attractors.dot.attribute.type.RatioType;
 import ca.attractors.dot.color.X11NamedColor;
 import ca.attractors.dot.html.HtmlLabel;
 import ca.attractors.dot.html.HtmlTable;
@@ -90,8 +89,7 @@ public class GraphTest extends TestCase {
 
 	public static void main(String[] args) {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
-		graph.setSizeDimension(new Dimension("5", "3"));
-		graph.setRatio(RatioType.Auto);
+		graph.setNodeSep("5");
 		
 		Node newNode = graph.newNode("node1");
 		newNode.setFillColor(X11NamedColor.ANTIQUEWHITE);
