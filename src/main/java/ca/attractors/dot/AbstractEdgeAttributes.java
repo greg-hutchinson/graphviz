@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import ca.attractors.dot.attribute.type.DirType;
+import ca.attractors.dot.color.IColor;
 
 /**
  * This class represents all the attribute definitions for its subclasses. Normally there should be no other behaviour here other than
@@ -47,12 +48,12 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 		set(STYLE, aStyle);
 	}
 
-	public void setColor(String aString) {
+	public void setColor(IColor aString) {
 		set(COLOR, aString);
 	}
 
-	public String getColor() {
-		return getString(COLOR);
+	public IColor getColor() {
+		return (IColor) get(COLOR);
 	}
 
 	public void setHeadPort(String aString) {
