@@ -89,12 +89,15 @@ public class GraphTest extends TestCase {
 
 	public static void main(String[] args) {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		graph.setNodeSep("5");
+		
 		Node newNode = graph.newNode("node1");
 		newNode.setFillColor(X11NamedColor.ANTIQUEWHITE);
 		newNode.setStyle(NodeStyleType.Filled);
 		graph.setBackgroundColor(X11NamedColor.RED);
 		graph.newEdge("a", "b");
 		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
+		edgeAttributes.setWeight("15");
 		edgeAttributes.setColor(X11NamedColor.BLUE);
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
