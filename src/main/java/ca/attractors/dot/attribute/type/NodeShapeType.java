@@ -2,6 +2,7 @@ package ca.attractors.dot.attribute.type;
 
 import ca.attractors.util.Strings;
 
+// TODO: add the other 50 or so possibilities ...
 public enum NodeShapeType implements IDotAttributeValue {
 	Box("box"),
 	Polygon("polygon"),
