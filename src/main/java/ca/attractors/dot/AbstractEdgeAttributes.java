@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import ca.attractors.dot.attribute.type.DirType;
+import ca.attractors.dot.attribute.type.IntegerDotAttributeValue;
 import ca.attractors.dot.color.IColor;
 
 /**
@@ -73,11 +74,11 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 		return getString(TAILPORT);
 	}
 
-	public void setWeight(String aString) {
-		set(WEIGHT, aString);
+	public void setWeight(Integer aValue) {
+		set(WEIGHT, new IntegerDotAttributeValue(aValue));
 	}
 
-	public String getWeightPort() {
-		return getString(WEIGHT);
+	public Integer getWeight() {
+		return ((IntegerDotAttributeValue) get(WEIGHT)).getIntegerValue();
 	}
 }

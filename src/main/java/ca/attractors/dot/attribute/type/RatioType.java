@@ -3,6 +3,7 @@ package ca.attractors.dot.attribute.type;
 import ca.attractors.util.Strings;
 
 public enum RatioType implements IDotAttributeValue {
+	Numeric("numeric"),
 	Fill("fill"),
 	Compress("compress"),
 	Expand("expand"),
