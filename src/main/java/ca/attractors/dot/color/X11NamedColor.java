@@ -2,6 +2,7 @@ package ca.attractors.dot.color;
 
 import java.awt.Color;
 
+import ca.attractors.dot.attribute.type.ColorSchemeType;
 import ca.attractors.util.Strings;
 
 public enum X11NamedColor implements ITerminalColor {
@@ -684,5 +685,7 @@ public enum X11NamedColor implements ITerminalColor {
 		return Strings.quoted(getValue());
 	}
 
-
+	public ColorSchemeType getColorScheme() {
+		return ColorSchemeType.X11;
+	}
 }

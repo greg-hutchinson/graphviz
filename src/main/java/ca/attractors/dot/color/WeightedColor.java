@@ -1,5 +1,6 @@
 package ca.attractors.dot.color;
 
+import ca.attractors.dot.attribute.type.ColorSchemeType;
 import ca.attractors.util.Strings;
 
 /**
@@ -34,5 +35,8 @@ public class WeightedColor implements ITerminalColor {
 		return Strings.quoted(getValue());
 	}
 
+	public ColorSchemeType getColorScheme() {
+		return color.getColorScheme();
+	}
 
 }
