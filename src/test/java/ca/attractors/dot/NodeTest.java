@@ -16,7 +16,7 @@ public class NodeTest extends DotTestCase {
 	
 	public void testSVGColor() {
 		Node node = new Node("abc");
-		node.setFillColor(SVGNamedColor.MEDIUM_BLUE);
+		node.setFillColor(SVGNamedColor.MEDIUMBLUE);
 		assertDotStringOnlyContains(Strings.quoted("abc"), "fillcolor=medium_blue, colorscheme=SVG", node.toDotString());
 	}
 
