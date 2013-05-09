@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.attribute.type.NodeShapeType;
+import ca.attractors.dot.attribute.type.NodeStyleType;
 import ca.attractors.dot.color.IColor;
 import ca.attractors.dot.html.HtmlLabel;
 
@@ -40,19 +42,19 @@ public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject i
 		set(FILLCOLOR, aFillColor);
 	}
 
-	public String getShape() {
-		return getString(SHAPE);
+	public NodeShapeType getShape() {
+		return (NodeShapeType) get(SHAPE);
 	}
 
-	public void setShape(String aShape) {
+	public void setShape(NodeShapeType aShape) {
 		set(SHAPE, aShape);
 	}
 
-	public String getStyle() {
-		return getString(STYLE);
+	public NodeStyleType getStyle() {
+		return (NodeStyleType) get(STYLE);
 	}
 
-	public void setStyle(String aStyle) {
+	public void setStyle(NodeStyleType aStyle) {
 		set(STYLE, aStyle);
 	}
 

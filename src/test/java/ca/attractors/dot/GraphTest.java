@@ -2,6 +2,7 @@ package ca.attractors.dot;
 
 import junit.framework.TestCase;
 import ca.attractors.dot.attribute.type.FontType;
+import ca.attractors.dot.attribute.type.NodeStyleType;
 import ca.attractors.dot.color.X11NamedColor;
 import ca.attractors.dot.html.HtmlLabel;
 import ca.attractors.dot.html.HtmlTable;
@@ -90,7 +91,7 @@ public class GraphTest extends TestCase {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		Node newNode = graph.newNode("node1");
 		newNode.setFillColor(X11NamedColor.ANTIQUEWHITE);
-		newNode.setStyle("filled");
+		newNode.setStyle(NodeStyleType.Filled);
 		graph.setBackgroundColor(X11NamedColor.RED);
 		graph.newEdge("a", "b");
 		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
