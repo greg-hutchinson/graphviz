@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import junit.framework.TestCase;
+import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.color.X11NamedColor;
 import ca.attractors.dot.html.HtmlLabel;
 import ca.attractors.dot.html.HtmlTable;
@@ -47,7 +48,7 @@ public class GraphTest extends TestCase {
 	public void testGetDefinition() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		assertEquals("", graph.getDefinition());
-		graph.setFontname("abc");
+		graph.setFontFace(FontType.Arial);
 		assertFalse("".equals(graph.getDefinition()));
 
 	}

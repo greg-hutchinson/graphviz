@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 import ca.attractors.dot.attribute.type.StringDotAttributeValue;
 import ca.attractors.dot.html.HtmlLabel;
@@ -20,7 +21,7 @@ public abstract class AbstractDotLanguageObject {
 	/* Here the common attribute values are defined. Note: these must be valid for 
 	 * Graphs, Subgraphs, Nodes, and Edges.
 	 */
-	private static final String FONTNAME = "fontname";
+	private static final String FONTFACE = "fontface";
 	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
 	private static final String COMMENT = "comment";
@@ -97,12 +98,12 @@ public abstract class AbstractDotLanguageObject {
 	}
 
 
-	public String getFontname() {
-		return getString(FONTNAME);
+	public FontType getFontface() {
+		return (FontType) get(FONTFACE);
 	}
 
-	public void setFontname(String aFontname) {
-		set(FONTNAME, aFontname);
+	public void setFontFace(FontType aFontFace) {
+		set(FONTFACE, aFontFace);
 	}
 
 	public String getFontsize() {
