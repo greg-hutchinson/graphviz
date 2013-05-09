@@ -11,7 +11,7 @@ public class GraphTest extends TestCase {
 
 	public void testToDotString() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
-		graph.setBackgroundColor("red");
+		graph.setBackgroundColor(X11NamedColor.RED);
 		String actualString = graph.toDotString();
 		assertEquals("digraph \"name\" {\ngraph [bgcolor=\"red\"]\n}\n", actualString);
 	}
@@ -19,17 +19,17 @@ public class GraphTest extends TestCase {
 	public void testToDotStringComplex() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		graph.newNode("node1");
-		graph.setBackgroundColor("red");
+		graph.setBackgroundColor(X11NamedColor.RED);
 		graph.newEdge("a", "b");
 		graph.newEdge("a", "c");
 		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
-		edgeAttributes.setColor("blue");
+		edgeAttributes.setColor(X11NamedColor.BLUE);
 		DefaultNodeAttributes nodeAttributes = graph.newDefaultNodeAttributes();
 		nodeAttributes.setFillColor(X11NamedColor.BLUE);
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		DefaultGraphAttributes defaultGraphAttributes = graph.newDefaultGraphAttributes();
-		defaultGraphAttributes.setBackgroundColor("blue");
+		defaultGraphAttributes.setBackgroundColor(X11NamedColor.BLUE);
 		String actualString = graph.toDotString();
 		assertEquals(getExpectedComplexString(), actualString);
 	}
@@ -91,10 +91,10 @@ public class GraphTest extends TestCase {
 		Node newNode = graph.newNode("node1");
 		newNode.setFillColor(X11NamedColor.ANTIQUEWHITE);
 		newNode.setStyle("filled");
-		graph.setBackgroundColor("red");
+		graph.setBackgroundColor(X11NamedColor.RED);
 		graph.newEdge("a", "b");
 		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
-		edgeAttributes.setColor("blue");
+		edgeAttributes.setColor(X11NamedColor.BLUE);
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		

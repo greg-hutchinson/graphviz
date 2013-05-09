@@ -1,5 +1,7 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.color.IColor;
+
 /**
  * @see AbstractEdgeAttributes for the generic documentation for these types of classes 
  * (i.e. AbstractXxxAttributes where Xxx is variable. )
@@ -10,12 +12,12 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 	private static final String SPLINES = "splines";
 	private static final String RANK_SEP = "ranksep";
 
-	public void setBackgroundColor(String aString) {
-		set(BG_COLOR, aString);
+	public void setBackgroundColor(IColor aColor) {
+		set(BG_COLOR, aColor);
 	}
 
-	public String getBackgroundColor() {
-		return getString(BG_COLOR);
+	public IColor getBackgroundColor() {
+		return (IColor) get(BG_COLOR);
 	}
 
 	public void setSplines(String aString) {
