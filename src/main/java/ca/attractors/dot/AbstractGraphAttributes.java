@@ -1,5 +1,6 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.attribute.type.DoubleDotAttributeValue;
 import ca.attractors.dot.attribute.type.RatioType;
 import ca.attractors.dot.color.IColor;
 
@@ -34,36 +35,43 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 		return getString(SPLINES);
 	}
 
-	public void setRankSep(String aString) {
-		set(RANK_SEP, aString);
+	public void setRankSep(Double aValue) {
+		set(RANK_SEP, new DoubleDotAttributeValue(aValue));
 	}
 
-	public String getRankSep() {
-		return getString(RANK_SEP);
+	public Double getRankSep() {
+		return ((DoubleDotAttributeValue) get(RANK_SEP)).getDoubleValue();
 	}
 
-	public void setNodeSep(String aString) {
-		set(NODE_SEP, aString);
+	public void setNodeSep(Double aValue) {
+		set(NODE_SEP, new DoubleDotAttributeValue(aValue));
 	}
 
-	public String getNodeSep() {
-		return getString(NODE_SEP);
+	public Double getNodeSep() {
+		return ((DoubleDotAttributeValue) get(NODE_SEP)).getDoubleValue();
 	}
 	
 	public RatioType getRatio() {
-		return (RatioType) get(RATIO);
+		Object o = get(RATIO);
+		if (o == null)
+			return null;
+		if (o instanceof RatioType)
+			return (RatioType) o;
+		if (o instanceof DoubleDotAttributeValue)
+			return RatioType.Numeric;
+		 throw new IllegalStateException("some strange object found in the ratio: " + o);
 	}
 	
 	public void setRatio(RatioType aRatio) {
 		set(RATIO, aRatio);
 	}
 	
-	public String getNumericRatio() {
-		return getString(RATIO);
+	public Double getNumericRatio() {
+		return ((DoubleDotAttributeValue) get(RATIO)).getDoubleValue();
 	}
 	
-	public void setNumericRatio(String aRatio) {
-		set(RATIO, aRatio);
+	public void setNumericRatio(Double aRatio) {
+		set(RATIO, new DoubleDotAttributeValue(aRatio));
 	}
 	
 	public Dimension getPageDimension() {
