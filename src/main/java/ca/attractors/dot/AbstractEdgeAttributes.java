@@ -15,6 +15,7 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 	private static final String COLOR = "color";
 	private static final String STYLE = "style";
 	private static final String DIR = "dir";
+	private static final String WEIGHT = "weight";
 
 	public DirType getDir() {
 		return (DirType) get(DIR);
@@ -70,5 +71,13 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 
 	public String getTailPort() {
 		return getString(TAILPORT);
+	}
+
+	public void setWeight(String aString) {
+		set(WEIGHT, aString);
+	}
+
+	public String getWeightPort() {
+		return getString(WEIGHT);
 	}
 }
