@@ -3,7 +3,7 @@ package ca.attractors.dot.attribute.type;
 import ca.attractors.util.Strings;
 
 public enum ColorSchemeType implements IDotAttributeValue {
-	X11("X11");
+	X11("X11"), SVG("SVG");
 	
 	private final String value;
 	
