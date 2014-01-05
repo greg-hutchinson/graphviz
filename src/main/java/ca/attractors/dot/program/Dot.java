@@ -5,9 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import ca.attractors.dot.Edge;
 import ca.attractors.dot.Graph;
 import ca.attractors.dot.GraphType;
 import ca.attractors.dot.Node;
+import ca.attractors.dot.attribute.type.DirType;
 import ca.attractors.dot.attribute.type.NodeStyleType;
 import ca.attractors.dot.color.X11NamedColor;
 
@@ -23,12 +25,25 @@ public class Dot implements IRenderer {
 	}
 
 	public static void main(String[] args) {
-		Graph graph = new Graph("abc", GraphType.DIGRAPH);
-		Node father = graph.newNode("Father");
-		Node daughter = graph.newNode("Daughter");
-		daughter.setFillColor(X11NamedColor.BLUE);
-		daughter.setStyle(NodeStyleType.Filled);
-		graph.newEdge(father.getName(), daughter.getName());
+		Graph graph = new Graph("FamilyTree", GraphType.GRAPH);
+		Node greg = graph.newNode("Greg");
+		greg.setUrl("https://plus.google.com/102689275145660064358/posts");
+		Node joan = graph.newNode("Joan");
+		Node alex = graph.newNode("Alex");
+		Node steph = graph.newNode("Stephanie");
+
+		alex.setFillColor(X11NamedColor.BLUE);
+		alex.setStyle(NodeStyleType.Filled);
+		graph.newEdge(greg, alex);
+		graph.newEdge(greg, steph);
+
+		graph.newEdge(joan, alex);
+		graph.newEdge(joan, steph);
+
+		Edge newEdge = graph.newEdge(greg, joan);
+		newEdge.setDir(DirType.BOTH);
+		newEdge.setLabel("spouse");
+//		newEdge.
 
 		graph.renderUsing(getRenderer(OutputFormat.PDF));
 		graph.renderUsing(getRenderer(OutputFormat.PNG));
