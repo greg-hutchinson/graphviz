@@ -5,53 +5,25 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import ca.attractors.dot.Edge;
 import ca.attractors.dot.Graph;
-import ca.attractors.dot.GraphType;
-import ca.attractors.dot.Node;
-import ca.attractors.dot.attribute.type.DirType;
-import ca.attractors.dot.attribute.type.NodeStyleType;
-import ca.attractors.dot.color.X11NamedColor;
 
 public class Dot implements IRenderer {
 
 	private static final String TEMPDIR = "c:\\temp\\";
-	private static final String EXE = "C:\\Program Files (x86)\\Graphviz2.34\\bin\\dot.exe";
+	private static final String EXE = "dot.exe";
+//	private static final String EXE = "C:\\Program Files (x86)\\Graphviz2.30\\bin\\dot.exe";
+//	private static final String EXE = "C:\\Program Files (x86)\\Graphviz2.34\\bin\\dot.exe";
 	private OutputFormat format = OutputFormat.PNG;
 	private String baseName;
+	private String exe;
 	
 	public Dot(OutputFormat anOutputFormat) {
+		this(anOutputFormat, EXE);
+	}
+
+	public Dot(OutputFormat anOutputFormat, String anExecutable) {
 		format = anOutputFormat;
-	}
-
-	public static void main(String[] args) {
-		Graph graph = new Graph("FamilyTree", GraphType.GRAPH);
-		Node greg = graph.newNode("Greg");
-		greg.setUrl("https://plus.google.com/102689275145660064358/posts");
-		Node joan = graph.newNode("Joan");
-		Node alex = graph.newNode("Alex");
-		Node steph = graph.newNode("Stephanie");
-
-		alex.setFillColor(X11NamedColor.BLUE);
-		alex.setStyle(NodeStyleType.Filled);
-		graph.newEdge(greg, alex);
-		graph.newEdge(greg, steph);
-
-		graph.newEdge(joan, alex);
-		graph.newEdge(joan, steph);
-
-		Edge newEdge = graph.newEdge(greg, joan);
-		newEdge.setDir(DirType.BOTH);
-		newEdge.setLabel("spouse");
-//		newEdge.
-
-		graph.renderUsing(getRenderer(OutputFormat.PDF));
-		graph.renderUsing(getRenderer(OutputFormat.PNG));
-		graph.renderUsing(getRenderer(OutputFormat.SVG));
-	}
-
-	private static IRenderer getRenderer(OutputFormat aFormat) {
-		return new Dot(aFormat);
+		exe = anExecutable;
 	}
 	
 	public OutputFormat getFormat() {
@@ -67,8 +39,6 @@ public class Dot implements IRenderer {
 		FileOutputStream fop = null;
 		try {
 			fop = renderGraphToTempFile(aGraph);
-			Runtime.getRuntime().exec(getCommand());
-			System.out.println("File written to " + TEMPDIR);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -93,12 +63,20 @@ public class Dot implements IRenderer {
 		fop.write(aGraph.toDotString().getBytes());
 		fop.flush();
 		fop.close();
+		try {
+			Runtime.getRuntime().exec(getCommand());
+		}
+		catch (IOException e) {
+			System.out.println("Could not execute Dot. Check that it is on your path. Tried -> " + exe);
+			throw e;
+		}
+		System.out.println("File written to " + TEMPDIR);
 		return fop;
 	}
 
 	private String getCommand() {
 		StringBuilder builder = new StringBuilder();
-		builder.append(EXE);
+		builder.append(getExe());
 		builder.append(" ");
 		builder.append(format.asParameter());
 		builder.append(" ");
@@ -106,6 +84,10 @@ public class Dot implements IRenderer {
 		builder.append(" ");
 		builder.append(getOutputFilename());
 		return builder.toString();
+	}
+
+	private String getExe() {
+		return exe;
 	}
 
 	private String getOutputFilename() {
