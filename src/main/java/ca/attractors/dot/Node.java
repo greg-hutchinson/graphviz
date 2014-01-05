@@ -1,5 +1,6 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.color.X11NamedColor;
 import ca.attractors.util.Strings;
 
 public class Node extends AbstractNodeAttributes {
@@ -43,5 +44,6 @@ public class Node extends AbstractNodeAttributes {
 	protected void markCreatedImplicitely() {
 		createdImplicitely = true;
 	}
+
 
 }
