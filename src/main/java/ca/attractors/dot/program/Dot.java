@@ -4,9 +4,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import ca.attractors.dot.DefaultNodeAttributes;
 import ca.attractors.dot.Graph;
 import ca.attractors.dot.GraphType;
 import ca.attractors.dot.Node;
+import ca.attractors.dot.attribute.type.NodeStyleType;
+import ca.attractors.dot.color.SVGNamedColor;
+import ca.attractors.dot.color.X11NamedColor;
 
 public class Dot {
 
@@ -20,8 +24,13 @@ public class Dot {
 
 	public static void main(String[] args) {
 		Graph graph = new Graph("abc", GraphType.DIGRAPH);
+		DefaultNodeAttributes nodeAttributes = graph.newDefaultNodeAttributes();
+//		nodeAttributes.setFillColor(X11NamedColor.YELLOW);
+//		nodeAttributes.setStyle(NodeStyleType.Filled);
 		Node father = graph.newNode("Father");
 		Node daughter = graph.newNode("Daughter");
+		daughter.setFillColor(X11NamedColor.BLUE);
+		daughter.setStyle(NodeStyleType.Filled);
 		graph.newEdge(father.getName(), daughter.getName());
 		new Dot(OutputFormat.PDF).writeToFile(graph);
 		new Dot(OutputFormat.PNG).writeToFile(graph);
@@ -55,7 +64,7 @@ public class Dot {
 			fop.flush();
 			fop.close();
 			Runtime.getRuntime().exec(getCommand());
-			System.out.println("Done");
+			System.out.println("File written to " + TEMPFILE);
 
 		} catch (IOException e) {
 			e.printStackTrace();

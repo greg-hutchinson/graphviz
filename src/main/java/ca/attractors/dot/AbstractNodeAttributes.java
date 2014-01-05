@@ -13,10 +13,28 @@ import ca.attractors.dot.html.HtmlLabel;
 public abstract class AbstractNodeAttributes extends AbstractDotLanguageObject implements IGraphElement {
 	private static final String LABEL = "label";
 	private static final String FILLCOLOR = "fillcolor";
+	private static final String BACKGROUND_COLOR = "bgcolor";
+	private static final String COLOR = "color";
 	private static final String SHAPE = "shape";
 	private static final String STYLE = "style";
 	private static final String WIDTH = "width";
 	private static final String HEIGHT = "height";
+
+	public void setBackgroundColor(IColor aColor) {
+		set(BACKGROUND_COLOR, aColor);
+	}
+
+	public IColor getBackgroundColor() {
+		return (IColor) get(BACKGROUND_COLOR);
+	}
+	
+	public void setColor(IColor aString) {
+		set(COLOR, aString);
+	}
+
+	public IColor getColor() {
+		return (IColor) get(COLOR);
+	}
 
 	public String getLabel() {
 		return getString(LABEL);
