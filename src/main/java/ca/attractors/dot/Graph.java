@@ -1,12 +1,14 @@
 package ca.attractors.dot;
 
-import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ca.attractors.dot.program.IRenderer;
+import ca.attractors.example.ParentNode;
+import ca.attractors.util.IParentNode;
 import ca.attractors.util.Strings;
 
 public class Graph extends AbstractGraphAttributes {
@@ -95,6 +97,10 @@ public class Graph extends AbstractGraphAttributes {
 		return (Edge) addGraphElement(edge);
 	}
 
+	public Edge newEdge(Node aFromNode, Node aToNode) {
+		return newEdge(aFromNode.getName(), aToNode.getName());
+	}
+
 	public Subgraph newSubgraph(String aName) {
 		return (Subgraph) addGraphElement(new Subgraph(aName, type));
 	}
@@ -126,6 +132,16 @@ public class Graph extends AbstractGraphAttributes {
 
 	public GraphType getType() {
 		return type;
+	}
+
+	public void visitParentNodes(List<ParentNode> aParentNodes) {
+		for (IParentNode node : aParentNodes) {
+			node.addToGraph(this);
+		}
+	}
+
+	public void renderUsing(IRenderer aRenderer) {
+		aRenderer.render(this);
 	}
 
 }

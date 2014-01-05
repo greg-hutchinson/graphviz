@@ -1,12 +1,14 @@
 package ca.attractors.example;
 
+import java.util.Arrays;
 import java.util.List;
 
 import ca.attractors.dot.Graph;
+import ca.attractors.util.IParentNode;
 
 
-public class ParentNode {
-	private List<String> childrenNames;
+public class ParentNode implements IParentNode {
+	private List<String> childrenNodeNames;
 	private String name;
 	
 	public String getName() {
@@ -14,11 +16,16 @@ public class ParentNode {
 	}
 	
 	public ParentNode(String aName, List<String> aListOfChildrenNames) {
-		childrenNames = aListOfChildrenNames;
+		name = aName;
+		childrenNodeNames = aListOfChildrenNames;
+	}
+
+	public ParentNode(String aName, String... aListOfChildrenNames) {
+		this(aName, Arrays.asList(aListOfChildrenNames));
 	}
 	
 	public List<String> getChildren() {
-		return childrenNames;
+		return childrenNodeNames;
 	}
 
 	public void addToGraph(Graph aGraph) {
@@ -27,7 +34,7 @@ public class ParentNode {
 	}
 
 	private void addChildrenToGraph(Graph aGraph) {
-		for (String childName : childrenNames) {
+		for (String childName : childrenNodeNames) {
 			aGraph.newEdge(getName(), childName);
 		}
 	}
