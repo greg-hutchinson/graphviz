@@ -1,2 +1,5 @@
 syntax: glob
 target/
+graphviz/src/textExamples/*.png
+graphviz/src/textExamples/*.pdf
+graphviz/src/textExamples/*.svg
