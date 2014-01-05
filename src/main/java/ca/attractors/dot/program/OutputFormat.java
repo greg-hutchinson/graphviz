@@ -7,7 +7,8 @@ public enum OutputFormat {
 	private OutputFormat(String aString) {
 		format = aString;
 	}
-	public String getFormat() {
-		return format;
+
+	public Object asParameter() {
+		return "-T" + format;
 	}
 }
