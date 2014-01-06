@@ -24,11 +24,11 @@ public abstract class AbstractDotLanguageObject {
 	/* Here the common attribute values are defined. Note: these must be valid for 
 	 * Graphs, Subgraphs, Nodes, and Edges.
 	 */
-	private static final String FONTFACE = "fontface";
-	private static final String URL = "URL";
 	private static final String COLOR_SCHEME = "colorscheme";
 	private static final String COMMENT = "comment";
+	private static final String FONTNAME = "fontname";
 	private static final String FONTSIZE = "fontsize";
+	private static final String URL = "URL";
 
 	private Map<String, IDotAttributeValue> attributes = new HashMap<String, IDotAttributeValue>();
 
@@ -124,14 +124,28 @@ public abstract class AbstractDotLanguageObject {
 		}
 	}
 
+	/**
+	 * @deprecated - use getFontName instead
+	 */
 	public FontType getFontface() {
-		return (FontType) get(FONTFACE);
+		return (FontType) get(FONTNAME);
 	}
 
+	/**
+	 * @deprecated - use setFontName instead
+	 */
 	public void setFontFace(FontType aFontFace) {
-		set(FONTFACE, aFontFace);
+		set(FONTNAME, aFontFace);
 	}
 
+	public void setFontname(FontType aFontType) {
+		set(FONTNAME, aFontType);
+	}
+
+	public FontType getFontname() {
+		return (FontType) get(FONTNAME);
+	}
+	
 	public String getFontsize() {
 		return getString(FONTSIZE);
 	}
