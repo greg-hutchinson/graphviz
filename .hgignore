@@ -3,3 +3,6 @@ target/
 graphviz/src/textExamples/*.png
 graphviz/src/textExamples/*.pdf
 graphviz/src/textExamples/*.svg
+graphviz/src/textExamples/*.svgz
+graphviz/src/textExamples/*.cmap
+graphviz/src/textExamples/*.pic

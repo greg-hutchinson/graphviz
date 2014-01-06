@@ -14,7 +14,7 @@ import ca.attractors.dot.program.OutputFormat;
 public class FamilyTreeExample {
 
 	public static void main(String[] args) {
-		Graph graph = new Graph("FamilyTree", GraphType.GRAPH);
+		Graph graph = new Graph("FamilyTree", GraphType.DIGRAPH);
 		Node greg = graph.newNode("Greg");
 		greg.setUrl("https://plus.google.com/102689275145660064358/posts");
 		Node joan = graph.newNode("Joan");
@@ -32,7 +32,7 @@ public class FamilyTreeExample {
 		Edge newEdge = graph.newEdge(greg, joan);
 		newEdge.setDir(DirType.BOTH);
 		newEdge.setLabel("spouse");
-//		newEdge.
+		newEdge.setConstraint(false);
 
 		graph.renderUsing(getRenderer(OutputFormat.PDF));
 		graph.renderUsing(getRenderer(OutputFormat.PNG));
