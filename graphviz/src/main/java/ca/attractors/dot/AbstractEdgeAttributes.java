@@ -1,5 +1,6 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.attribute.type.BooleanDotAttributeValue;
 import ca.attractors.dot.attribute.type.DirType;
 import ca.attractors.dot.attribute.type.IntegerDotAttributeValue;
 import ca.attractors.dot.color.IColor;
@@ -9,13 +10,14 @@ import ca.attractors.dot.color.IColor;
  * the constants that defined the attribute names and the corresponding getters/setters.
  */
 public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject implements IGraphElement {
-	private static final String LABEL = "label";
+	private static final String COLOR = "color";
+	private static final String CONSTRAINT = "constraint";
+	private static final String DIR = "dir";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String HEADPORT = "headport";
-	private static final String TAILPORT = "tailport";
-	private static final String COLOR = "color";
+	private static final String LABEL = "label";
 	private static final String STYLE = "style";
-	private static final String DIR = "dir";
+	private static final String TAILPORT = "tailport";
 	private static final String WEIGHT = "weight";
 
 	public DirType getDir() {
@@ -24,6 +26,14 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 
 	public void setDir(DirType aDirType) {
 		set(DIR, aDirType);
+	}
+	
+	public boolean getConstraint() {
+		return ((BooleanDotAttributeValue) get(CONSTRAINT)).getBooleanValue();
+	}
+
+	public void setConstraint(boolean aConstraintFlag) {
+		set(CONSTRAINT, aConstraintFlag);
 	}
 
 	public String getLabel() {

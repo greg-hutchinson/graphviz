@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import ca.attractors.dot.attribute.type.BooleanDotAttributeValue;
 import ca.attractors.dot.attribute.type.ColorSchemeType;
 import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
@@ -89,6 +90,10 @@ public abstract class AbstractDotLanguageObject {
 
 	protected final void set(String aKey, String aValue) {
 		set(aKey, new StringDotAttributeValue(aValue));
+	}
+
+	protected final void set(String aKey, boolean aValue) {
+		set(aKey, new BooleanDotAttributeValue(aValue));
 	}
 
 	protected final void set(String aKey, IDotAttributeValue aValue) {

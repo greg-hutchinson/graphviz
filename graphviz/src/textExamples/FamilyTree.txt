@@ -1,4 +1,4 @@
 digraph tree {
     Greg -> Alex
-    Greg -> Steph
+    Greg -> Steph 
 }
