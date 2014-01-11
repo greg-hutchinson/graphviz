@@ -8,7 +8,7 @@ public enum FontType implements IDotAttributeValue {
 	Avqest("Avqest"),
 	Blackletter("Blackletter"),
 	Calibri("Calibri"),
-	ComicSans("Comic Sans"),
+	ComicSans("Comic Sans MS"),
 	Courier("Courier"),
 	Decorative("Decorative"),
 	Fraktur("Fraktur"),
