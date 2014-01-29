@@ -15,7 +15,6 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 	private static final String DIR = "dir";
 	private static final String FILLCOLOR = "fillcolor";
 	private static final String HEADPORT = "headport";
-	private static final String LABEL = "label";
 	private static final String STYLE = "style";
 	private static final String TAILPORT = "tailport";
 	private static final String WEIGHT = "weight";
@@ -34,14 +33,6 @@ public abstract class AbstractEdgeAttributes extends AbstractDotLanguageObject i
 
 	public void setConstraint(boolean aConstraintFlag) {
 		set(CONSTRAINT, aConstraintFlag);
-	}
-
-	public String getLabel() {
-		return getString(LABEL);
-	}
-
-	public void setLabel(String aLabel) {
-		set(LABEL, aLabel);
 	}
 
 	public String getFillColor() {
