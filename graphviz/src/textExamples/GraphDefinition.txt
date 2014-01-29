@@ -1,0 +1,26 @@
+digraph "GraphDefinition" {
+  Regina
+  lasvegas [label="Las Vegas"]
+  Luxor
+  Zurich
+  Basel
+
+}
+
+
+
+
+/*
+graph [label="Directed Graph
+(Drawn with Graphviz)"]
+Edge [dir="both"]
+Regina -> lasvegas [label="1795 km"]
+Regina -> "Luxor" [label="10575km"]
+Regina -> Zurich [label="7396 km"]
+lasvegas -> "Luxor" [label="12350 km"]
+subgraph "cluster_sub" {
+   graph [label="Subgraph"]
+   Zurich -> Basel [label="75 km"]
+}
+}
+*/
