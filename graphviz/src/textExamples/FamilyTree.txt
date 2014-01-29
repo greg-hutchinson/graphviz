@@ -1,4 +1,9 @@
 digraph tree {
-    Greg -> Alex
-    Greg -> Steph 
+   Greg -> Joan [label="spouse", dir="both", constraint=false]
+   Greg -> Alex [label="daughter"]
+   Greg -> Steph  [label="daughter"]
+   Joan -> Alex [label="daughter"]
+   Joan -> Steph  [label="daughter"]
+
+
 }

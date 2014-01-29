@@ -24,6 +24,8 @@ public abstract class AbstractDotLanguageObject {
 	/* Here the common attribute values are defined. Note: these must be valid for 
 	 * Graphs, Subgraphs, Nodes, and Edges.
 	 */
+	private static final String LABEL = "label";
+
 	private static final String COLOR_SCHEME = "colorscheme";
 	private static final String COMMENT = "comment";
 	private static final String FONTNAME = "fontname";
@@ -56,6 +58,22 @@ public abstract class AbstractDotLanguageObject {
 		aPrintStream.append(attributeString);
 		if (attributeString.length() + definition.length() > 0)
 			aPrintStream.append("\n");
+	}
+
+	public String getLabel() {
+		return getString(LABEL);
+	}
+
+	public void setLabel(String aLabel) {
+		set(LABEL, aLabel);
+	}
+
+	public HtmlLabel getHtmlLabel() {
+		return getHtmlLabel(LABEL);
+	}
+
+	public void setHtmlLabel(HtmlLabel aLabel) {
+		set(LABEL, aLabel);
 	}
 
 	/**

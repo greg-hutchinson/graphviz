@@ -7,6 +7,7 @@ import ca.attractors.dot.GraphType;
 import ca.attractors.dot.Node;
 import ca.attractors.dot.attribute.type.DirType;
 import ca.attractors.dot.attribute.type.FontType;
+import ca.attractors.dot.attribute.type.NodeShapeType;
 import ca.attractors.dot.attribute.type.NodeStyleType;
 import ca.attractors.dot.color.X11NamedColor;
 import ca.attractors.dot.program.Dot;
@@ -30,6 +31,7 @@ public class FamilyTreeExample {
 
 		alex.setFillColor(X11NamedColor.BLUE);
 		alex.setStyle(NodeStyleType.Filled);
+		alex.setShape(NodeShapeType.BOX);
 		graph.newEdge(greg, alex);
 		graph.newEdge(greg, steph);
 
