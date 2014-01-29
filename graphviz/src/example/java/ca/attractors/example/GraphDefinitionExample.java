@@ -24,20 +24,20 @@ public class GraphDefinitionExample {
 		Node luxor = graph.newNode("Luxor");
 
 		Edge reginaLasVegas = graph.newEdge(regina, lasVegas);
-		reginaLasVegas.setLabel("1795 km");
+		reginaLasVegas.setLabel("1795km");
 		Edge reginaLuxor = graph.newEdge(regina, luxor);
 		reginaLuxor.setLabel("10575km");
 
 		Edge lasVegasLuxor = graph.newEdge(lasVegas, luxor);
-		lasVegasLuxor.setLabel("12350 km");
+		lasVegasLuxor.setLabel("12350km");
 
 		Subgraph subgraph = graph.newSubgraph("cluster_sub");
 		Node zurich = subgraph.newNode("Zurich");
 		Node basel = subgraph.newNode("Basel");
 		Edge reginaZurich = graph.newEdge(regina, zurich);
-		reginaZurich.setLabel("7396 km");
+		reginaZurich.setLabel("7396km");
 		Edge zurichBasel = subgraph.newEdge(zurich, basel);
-		zurichBasel.setLabel("75 km");
+		zurichBasel.setLabel("75km");
 		subgraph.setLabel("Subgraph");
 
 		graph.renderUsing(getRenderer(OutputFormat.SVG));

@@ -10,17 +10,36 @@ digraph "GraphDefinition" {
 
 
 
-/*
-graph [label="Directed Graph
-(Drawn with Graphviz)"]
-Edge [dir="both"]
-Regina -> lasvegas [label="1795 km"]
-Regina -> "Luxor" [label="10575km"]
-Regina -> Zurich [label="7396 km"]
-lasvegas -> "Luxor" [label="12350 km"]
-subgraph "cluster_sub" {
-   graph [label="Subgraph"]
-   Zurich -> Basel [label="75 km"]
-}
-}
+/* Supports C style comments 
+  1) Give the graph a label
+  graph [label="Directed Graph\n(Drawn with Graphviz)"]
+
+
+  2) Now some edges
+  Regina -> lasvegas 
+  Regina -> "Luxor" 
+  Regina -> Zurich 
+  Zurich -> Basel
+  lasvegas -> "Luxor" 
+  
+  
+  
+
+  3) Label the edges
+  Regina -> lasvegas [label="1795km"]
+  Regina -> "Luxor" [label="10575km"]
+  Regina -> Zurich [label="7396km"]
+  Zurich -> Basel [label="75km"]
+  Note the arrow direction below 
+  lasvegas -> "Luxor" [label="12350km", dir="both"] 
+
+
+  4) change the defaultAttributes for Edges - Once this is added, we can change lasvegas -> Luxor  
+  Edge [dir="both"] 
+  
+  5) Create the subgraph - Note: cluster prefix is keyword to dot
+  subgraph "cluster_sub" { 
+     graph [label="Subgraph"] 
+     6) Move the Edge Zurich -> Basel into this subgraph 
+	 }
 */
