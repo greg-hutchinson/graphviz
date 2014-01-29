@@ -1,0 +1,17 @@
+digraph "HowDotWorks" {
+    node [  shape = rectangle ];
+    subgraph cluster_normalDot {
+      graph [label="Normal Dot Process"]
+      dotfile [label=".gv"]
+      svgfile [label=".svg"]
+      pdffile [label=".pdf"]
+      dotfile -> dot -> {svgfile pdffile}
+      dot [label="dot.exe", shape=circle]
+      input [label="", style=invis]
+      input -> dotfile
+    }
+    program [shape=circle]
+    data [shape = polygon, sides = 6, color = blue, style = filled]
+    data -> program
+    program -> dotfile
+}
