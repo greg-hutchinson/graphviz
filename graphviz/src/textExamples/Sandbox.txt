@@ -1,0 +1,8 @@
+digraph tree {
+   graph [splines=ortho]
+   Greg -> Joan [constraint=false]
+   Greg -> Alex
+   Greg -> Steph
+   Joan -> Alex
+   Joan -> Steph
+}

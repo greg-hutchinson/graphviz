@@ -1,4 +1,5 @@
 digraph tree {
+   graph [splines=ortho]
    Greg -> Joan [label="spouse", dir="both", constraint=false]
    Greg -> Alex [label="daughter"]
    Greg -> Steph  [label="daughter"]
