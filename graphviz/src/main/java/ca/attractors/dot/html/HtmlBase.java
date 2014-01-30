@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import ca.attractors.dot.attribute.type.IDotAttributeValue;
 
 abstract class HtmlBase implements IDotAttributeValue {
-	
+
 	public final String toDotString() {
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		PrintStream stream = new PrintStream(out);
@@ -20,18 +20,24 @@ abstract class HtmlBase implements IDotAttributeValue {
 	}
 
 	abstract void basicToDotStringOn(PrintStream aPrintStream);
-	
+
 	public String getValue() {
 		return toString();
 	}
 
 	void appendIfNotNull(String name, Object anAttributeValue, PrintStream aPrintStream) {
-		if (anAttributeValue != null) {
-			aPrintStream.append(name);
-			aPrintStream.append("=\"");
-			aPrintStream.append(anAttributeValue.toString());
-			aPrintStream.append("\" ");
-		}
+		if (anAttributeValue == null)
+			return;
+		aPrintStream.append(name);
+		aPrintStream.append("=\"");
+		aPrintStream.append(getAttributeValue(anAttributeValue));
+		aPrintStream.append("\" ");
+	}
+
+	private String getAttributeValue(Object anAttributeValue) {
+		if (anAttributeValue instanceof IDotAttributeValue)
+			return (((IDotAttributeValue) anAttributeValue).getValue());
+		return anAttributeValue.toString();
 	}
 
 }

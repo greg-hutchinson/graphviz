@@ -20,6 +20,9 @@ public class ColorList implements IColorList {
 		return result;
 	}
 
+	public String toString() {
+		return getValue();
+	}
 	public String toDotString() {
 		return Strings.quoted(getValue());
 	}
