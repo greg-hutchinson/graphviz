@@ -1,0 +1,36 @@
+The Java Api
+Grappa -
+- Very low level API - Almost no extra layer of abstraction
+- Lots of code dedicated to rendering.
+
+Dot - Bitbucket - URl goes here.
+- Very nice abstractions
+-- Graph, Node, Edge, Subgraph
+-- DefaultGraphAttribute, DefaultNodeAttributes, DefaultEdgeAttributes
+-- All creation of other objects is supplied from an instance of Graph,
+--- (i.e. newNode("NodeName"), newEdge(node1, node2), newDefaultNodeAttributes, etc.
+
+Example using the Java Binding - Use this terminology everywhere else - binding
+- Use HtmlLabel
+-
+
+In Wikis and Sharepoint
+- What is the problem with diagrams in Wikis?
+-- Where is the source for the diagram?
+-- What changed from one version to the other?
+- Graphviz is source
+
+Feature Branches within Hg
+- Automerge
+Demo
+
+JavaDevelopment Day
+- Challenge
+-- Learn Graphviz
+-- Enhance the Java Binding to support HtmlLabels.
+-- Make something that is particular useful for the organization
+-- Current Orgcharts are maintained by hand.
+
+Demo of Orgchart.
+
+
