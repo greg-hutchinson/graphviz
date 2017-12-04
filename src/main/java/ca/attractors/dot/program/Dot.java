@@ -64,11 +64,16 @@ public class Dot implements IRenderer {
 		fop.flush();
 		fop.close();
 		try {
-			Runtime.getRuntime().exec(getCommand());
+			String command = getCommand();
+			System.out.println("About to execute -> " + command);
+			Process p = Runtime.getRuntime().exec(command);
+			p.waitFor();
 		}
 		catch (IOException e) {
 			System.out.println("Could not execute Dot. Check that it is on your path. Tried -> " + exe);
 			throw e;
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		System.out.println("File written to " + TEMPDIR);
 		return fop;
