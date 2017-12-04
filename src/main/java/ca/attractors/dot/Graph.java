@@ -54,7 +54,7 @@ public class Graph extends AbstractGraphAttributes {
 
 	protected CharSequence getGraphString() {
 		String textName = name;
-		if (name != "")
+		if (!name.equals(""))
 			textName = Strings.quoted(textName) + " ";
 		return getGraphTypeString() + " " + textName + "{\n";
 	}
@@ -134,7 +134,7 @@ public class Graph extends AbstractGraphAttributes {
 		return type;
 	}
 
-	public void visitParentNodes(List<ParentNode> aParentNodes) {
+	public void visitParentNodes(List<IParentNode> aParentNodes) {
 		for (IParentNode node : aParentNodes) {
 			node.addToGraph(this);
 		}
