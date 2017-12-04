@@ -11,8 +11,6 @@ public class Dot implements IRenderer {
 
 	private static final String TEMPDIR = "c:\\temp\\";
 	private static final String EXE = "dot.exe";
-//	private static final String EXE = "C:\\Program Files (x86)\\Graphviz2.30\\bin\\dot.exe";
-//	private static final String EXE = "C:\\Program Files (x86)\\Graphviz2.34\\bin\\dot.exe";
 	private OutputFormat format = OutputFormat.PNG;
 	private String baseName;
 	private String exe;
@@ -56,6 +54,7 @@ public class Dot implements IRenderer {
 		baseName = aGraph.getName();
 		if (baseName == null || baseName.equals(""))
 			baseName = "Unnamed";
+		baseName = baseName.replaceAll(" ", "");
 		File file = new File(getTempFilename());
 		FileOutputStream fop = new FileOutputStream(file);
 		if (!file.exists())
