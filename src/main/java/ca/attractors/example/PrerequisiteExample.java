@@ -7,6 +7,7 @@ import ca.attractors.dot.Graph;
 import ca.attractors.dot.GraphType;
 import ca.attractors.dot.program.Dot;
 import ca.attractors.dot.program.OutputFormat;
+import ca.attractors.util.IParentNode;
 
 public class PrerequisiteExample {
 	
@@ -20,8 +21,8 @@ public class PrerequisiteExample {
 		return new Dot(OutputFormat.PNG);
 	}
 
-	private static List<ParentNode> getParentNodes() {
-		List<ParentNode> parents = new ArrayList<ParentNode>();
+	private static List<IParentNode> getParentNodes() {
+		List<IParentNode> parents = new ArrayList<IParentNode>();
 		parents.add(new ParentNode("BlackJackUi", "Guava", "BlackJack", "Commons"));
 		parents.add(new ParentNode("BlackJack", "Deck"));
 		parents.add(new ParentNode("Deck", "StringUtil", "Cards"));

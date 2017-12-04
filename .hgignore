@@ -8,3 +8,4 @@ graphviz/src/textExamples/*.cmap
 graphviz/src/textExamples/*.pic
 .idea/*
 .gradle/*
+out/*
