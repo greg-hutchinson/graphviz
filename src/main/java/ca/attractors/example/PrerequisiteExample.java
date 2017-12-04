@@ -12,13 +12,13 @@ import ca.attractors.util.IParentNode;
 public class PrerequisiteExample {
 	
 	public static void main(String[] args) {
-		Graph graph = new Graph("Prerequisite Graph", GraphType.DIGRAPH);
+		Graph graph = new Graph("PrerequisiteGraph", GraphType.DIGRAPH);
 		graph.visitParentNodes(getParentNodes());
 		graph.renderUsing(getRenderer());
 	}
 
 	private static Dot getRenderer() {
-		return new Dot(OutputFormat.PNG);
+		return new Dot(OutputFormat.SVG);
 	}
 
 	private static List<IParentNode> getParentNodes() {
