@@ -9,3 +9,4 @@ graphviz/src/textExamples/*.pic
 .idea/*
 .gradle/*
 out/*
+build/*
