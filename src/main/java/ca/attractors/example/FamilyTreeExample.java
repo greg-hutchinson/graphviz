@@ -13,7 +13,6 @@ import ca.attractors.dot.color.X11NamedColor;
 import ca.attractors.dot.program.Dot;
 import ca.attractors.dot.program.IRenderer;
 import ca.attractors.dot.program.OutputFormat;
-import com.sun.istack.internal.NotNull;
 
 public class FamilyTreeExample {
 
@@ -49,7 +48,6 @@ public class FamilyTreeExample {
 		graph.renderUsing(getRenderer(OutputFormat.SVG));
 	}
 
-	@NotNull
 	private static IRenderer getRenderer(OutputFormat aFormat) {
 		return new Dot(aFormat);
 	}
