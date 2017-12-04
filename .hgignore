@@ -10,3 +10,4 @@ graphviz/src/textExamples/*.pic
 .gradle/*
 out/*
 build/*
+graphviz.iml
