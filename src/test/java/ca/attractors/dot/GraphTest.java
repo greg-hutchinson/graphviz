@@ -1,5 +1,6 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.attribute.type.NodeShapeType;
 import junit.framework.TestCase;
 import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.attribute.type.NodeStyleType;
@@ -46,6 +47,7 @@ public class GraphTest extends TestCase {
 		edgeAttributes.setColor(X11NamedColor.BLUE);
 		DefaultNodeAttributes nodeAttributes = graph.newDefaultNodeAttributes();
 		nodeAttributes.setFillColor(X11NamedColor.BLUE);
+		nodeAttributes.setShape(NodeShapeType.PLAIN_TEXT);
 		Subgraph subgraph = graph.newSubgraph("sub1");
 		subgraph.newNode("d");
 		DefaultGraphAttributes defaultGraphAttributes = graph.newDefaultGraphAttributes();
@@ -97,7 +99,7 @@ public class GraphTest extends TestCase {
 		builder.append("\"a\" -> \"b\"\n");
 		builder.append("\"a\" -> \"c\"\n");
 		builder.append("Edge [color=\"blue\"]\n");
-		builder.append("Node [fillcolor=\"blue\"]\n");
+		builder.append("Node [fillcolor=\"blue\", shape=\"plaintext \"]\n");
 		builder.append("subgraph \"sub1\" {\n");
 		builder.append("\"d\"\n");
 		builder.append("}\n");
