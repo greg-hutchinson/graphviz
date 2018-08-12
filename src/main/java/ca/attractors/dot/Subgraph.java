@@ -8,6 +8,10 @@ public class Subgraph extends Graph implements IGraphElement {
 		super(aName, aGraphType);
 	}
 
+	protected Subgraph(String aName, GraphType aGraphType, RankDir aRankDir) {
+		super(aName, aGraphType, aRankDir);
+	}
+
 	protected String getGraphTypeString() {
 		return "subgraph";
 	}
