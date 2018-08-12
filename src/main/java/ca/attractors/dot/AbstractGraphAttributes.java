@@ -1,6 +1,7 @@
 package ca.attractors.dot;
 
 import ca.attractors.dot.attribute.type.DoubleDotAttributeValue;
+import ca.attractors.dot.attribute.type.RankDirType;
 import ca.attractors.dot.attribute.type.RatioType;
 import ca.attractors.dot.color.IColor;
 
@@ -13,6 +14,7 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 	private static final String BG_COLOR = "bgcolor";
 	private static final String SPLINES = "splines";
 	private static final String RANK_SEP = "ranksep";
+	private static final String RANK_DIR_TYPE = "rankdir";
 	private static final String NODE_SEP = "nodesep";
 	private static final String RATIO = "ratio";
 	
@@ -81,12 +83,20 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 	public void setPageDimension(Dimension aDimension) {
 		set(PAGE_SIZE, aDimension);
 	}
-	
+
 	public Dimension getSizeDimension() {
 		return (Dimension) get(SIZE);
 	}
-	
+
 	public void setSizeDimension(Dimension aDimension) {
 		set(SIZE, aDimension);
+	}
+
+	public RankDirType getRankDirType() {
+		return (RankDirType) get(RANK_DIR_TYPE);
+	}
+
+	public void setRankDir(RankDirType aType) {
+		set(RANK_DIR_TYPE, aType);
 	}
 }
