@@ -15,6 +15,7 @@ public class Graph extends AbstractGraphAttributes {
 
 	private String name;
 	private GraphType type;
+	private RankDir rankDir;
 	private List<IGraphElement> objects = new ArrayList<IGraphElement>();
 	private Map<String, Node> nodes = new HashMap<String, Node>();
 
@@ -23,6 +24,10 @@ public class Graph extends AbstractGraphAttributes {
 	}
 
 	public Graph(String aName, GraphType aGraphType) {
+		this(aName, aGraphType, null);
+	}
+
+	public Graph(String aName, GraphType aGraphType, RankDir aRankDir) {
 		super();
 		if (aName == null)
 			throw new NullPointerException("aName must not be null");
@@ -30,10 +35,14 @@ public class Graph extends AbstractGraphAttributes {
 			throw new NullPointerException("aGraphType must not be null");
 		name = aName;
 		type = aGraphType;
+		rankDir = aRankDir;
 	}
 
 	public void toDotStringOn(PrintStream aPrintStream) {
 		aPrintStream.append(getGraphString());
+		if (rankDir != null) {
+			aPrintStream.append(rankDir.toDotString() + "\n");
+		}
 		basicToDotStringOn(aPrintStream);
 		printComponentsOn(aPrintStream);
 		aPrintStream.append("}\n");

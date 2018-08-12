@@ -18,6 +18,24 @@ public class GraphTest extends TestCase {
 		assertEquals("digraph \"name\" {\ngraph [bgcolor=\"red\"]\n}\n", actualString);
 	}
 
+	public void testRankDir() {
+		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		String actualString = graph.toDotString();
+		assertEquals("digraph \"name\" {\n}\n", actualString);
+
+		graph = new Graph("name", GraphType.DIGRAPH, RankDir.BOTTOM_TO_TOP);
+		actualString = graph.toDotString();
+		assertEquals("digraph \"name\" {\nrankDir=BT\n}\n", actualString);
+
+		graph = new Graph("name", GraphType.DIGRAPH);
+		actualString = graph.toDotString();
+		assertEquals("digraph \"name\" {\n}\n", actualString);
+
+		graph = new Graph("name", GraphType.DIGRAPH, RankDir.LEFT_TO_RIGHT);
+		actualString = graph.toDotString();
+		assertEquals("digraph \"name\" {\nrankDir=LR\n}\n", actualString);
+	}
+
 	public void testToDotStringComplex() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
 		graph.newNode("node1");
