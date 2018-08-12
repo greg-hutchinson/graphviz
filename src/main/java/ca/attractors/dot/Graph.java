@@ -35,14 +35,15 @@ public class Graph extends AbstractGraphAttributes {
 			throw new NullPointerException("aGraphType must not be null");
 		name = aName;
 		type = aGraphType;
-		rankDir = aRankDir;
+		if (aRankDir == null)
+			rankDir = RankDir.NULL;
+		else
+			rankDir = aRankDir;
 	}
 
 	public void toDotStringOn(PrintStream aPrintStream) {
 		aPrintStream.append(getGraphString());
-		if (rankDir != null) {
-			aPrintStream.append(rankDir.toDotString() + "\n");
-		}
+		aPrintStream.append(rankDir.toDotString());
 		basicToDotStringOn(aPrintStream);
 		printComponentsOn(aPrintStream);
 		aPrintStream.append("}\n");

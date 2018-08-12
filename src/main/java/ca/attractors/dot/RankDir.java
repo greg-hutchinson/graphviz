@@ -1,7 +1,7 @@
 package ca.attractors.dot;
 
 public enum RankDir {
-    TOP_TO_BOTTOM("TB"), LEFT_TO_RIGHT("LR"), BOTTOM_TO_TOP("BT"), RIGHT_TO_LEFT("RL");
+    TOP_TO_BOTTOM("TB"), LEFT_TO_RIGHT("LR"), BOTTOM_TO_TOP("BT"), RIGHT_TO_LEFT("RL"), NULL("");
 
     private String code;
 
@@ -19,7 +19,9 @@ public enum RankDir {
     }
 
     public String toDotString() {
-        return "rankDir=" + getCode();
+        if (this == NULL)
+            return "";
+        return "rankDir=" + getCode() + "\n";
     }
 
 }
