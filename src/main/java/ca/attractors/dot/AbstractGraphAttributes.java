@@ -1,8 +1,6 @@
 package ca.attractors.dot;
 
-import ca.attractors.dot.attribute.type.DoubleDotAttributeValue;
-import ca.attractors.dot.attribute.type.RankDirType;
-import ca.attractors.dot.attribute.type.RatioType;
+import ca.attractors.dot.attribute.type.*;
 import ca.attractors.dot.color.IColor;
 
 /**
@@ -19,7 +17,10 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 	private static final String RATIO = "ratio";
 	
 	private static final String PAGE_SIZE = "page";
-	private static final String SIZE = "size";
+    private static final String SIZE = "size";
+    private static final String CENTER = "center";
+    private static final String CONCENTRATE = "concentrate";
+    private static final String QUANTUM = "quantum";
 
 	public void setBackgroundColor(IColor aColor) {
 		set(BG_COLOR, aColor);
@@ -92,11 +93,31 @@ public abstract class AbstractGraphAttributes extends AbstractDotLanguageObject 
 		set(SIZE, aDimension);
 	}
 
-	public RankDirType getRankDirType() {
-		return (RankDirType) get(RANK_DIR_TYPE);
-	}
+    public RankDirType getRankDirType() {
+        return (RankDirType) get(RANK_DIR_TYPE);
+    }
 
-	public void setRankDir(RankDirType aType) {
-		set(RANK_DIR_TYPE, aType);
-	}
+    public void setRankDir(RankDirType aType) {
+        set(RANK_DIR_TYPE, aType);
+    }
+
+    public boolean getCenter() {return ((BooleanDotAttributeValue) get(CENTER)).getBooleanValue(); }
+
+    public void setCenter(boolean aFlag) {
+        set(CENTER, aFlag);
+    }
+
+    public boolean getConcentrate() {return ((BooleanDotAttributeValue) get(CONCENTRATE)).getBooleanValue(); }
+
+    public void setConcentrate(boolean aFlag) {
+        set(CONCENTRATE, aFlag);
+    }
+    public void setQuantum(Double aValue) {
+        set(QUANTUM, new DoubleDotAttributeValue(aValue));
+    }
+
+    public Double getQuantum() {
+        return ((DoubleDotAttributeValue) get(QUANTUM)).getDoubleValue();
+    }
+
 }

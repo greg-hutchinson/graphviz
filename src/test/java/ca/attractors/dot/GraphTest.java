@@ -1,5 +1,6 @@
 package ca.attractors.dot;
 
+import ca.attractors.dot.attribute.type.RankDirType;
 import junit.framework.TestCase;
 import ca.attractors.dot.attribute.type.FontType;
 import ca.attractors.dot.attribute.type.NodeStyleType;
@@ -52,7 +53,11 @@ public class GraphTest extends TestCase {
 		assertEquals("", graph.getDefinition());
 		graph.setFontFace(FontType.Arial);
 		assertFalse("".equals(graph.getDefinition()));
+	}
 
+	public void testCenter() {
+		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		graph.setCenter(true);
 	}
 
 	public void testConstructors() {
@@ -88,8 +93,10 @@ public class GraphTest extends TestCase {
 		return builder.toString();
 	}
 
-	public static void main(String[] args) {
+	public void testMain() {
 		Graph graph = new Graph("name", GraphType.DIGRAPH);
+		graph.setCenter(true);
+		graph.setRankDir(RankDirType.RL);
 		graph.setPageDimension(new Dimension("8.5", "11"));
 		graph.setNumericRatio(1.5);
 		assertEquals("numeric ratio", RatioType.Numeric, graph.getRatio());
@@ -101,7 +108,8 @@ public class GraphTest extends TestCase {
 		newNode.setFillColor(X11NamedColor.ANTIQUEWHITE);
 		newNode.setStyle(NodeStyleType.Filled);
 		graph.setBackgroundColor(X11NamedColor.RED);
-		graph.newEdge("a", "b");
+		Edge edge = graph.newEdge("a", "b");
+		edge.setConstraint(true);
 		DefaultEdgeAttributes edgeAttributes = graph.newDefaultEdgeAttributes();
 		edgeAttributes.setWeight(15);
 		edgeAttributes.setColor(X11NamedColor.BLUE);
@@ -118,7 +126,7 @@ public class GraphTest extends TestCase {
 		
 		String actualString = graph.toDotString();
 		
-		System.out.println(actualString);
+		System.out.println("\n\n\n" + actualString);
 	}
 
 }
