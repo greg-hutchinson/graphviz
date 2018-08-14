@@ -5,7 +5,7 @@ import ca.attractors.util.Strings;
 public enum RankDirType implements IDotAttributeValue {
 	TB("TB"),
 	LR("LR"),
-	BR("BR"),
+	BT("BT"),	//This used to be BR - no such thing
 	RL("RL");
 	
 	private final String value;
